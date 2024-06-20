@@ -343,11 +343,12 @@ body {
   justify-content: space-between;
   width: 100%;
   margin-bottom: 1rem;
+  overflow-x: scroll;
 }
 .pantalla-principal .contenedor-principal .contenedor-carta-menu .categorias .categoria {
   height: 25px;
   border-radius: 5px;
-  padding: 13px 10px;
+  padding: 18px 10px;
   margin-right: 10px;
   text-align: center;
   display: flex;
@@ -378,7 +379,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
 }
 .pantalla-principal .contenedor-footer .footer .seccion {
   display: flex;
@@ -723,20 +724,24 @@ body {
 }
 .carta-menu .plato {
   width: 100%;
-  height: fit-content;
+  height: auto;
   display: flex;
   align-items: center;
   border-radius: 15px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   background-color: white;
   border: 0.5px solid #ececec;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  flex-direction: row;
+  overflow: hidden;
+  justify-content: center;
+  align-items: stretch;
 }
 .carta-menu .plato .imagen {
   width: 50%;
-  height: 110px;
-  border-radius: 15px 0 0 15px;
   overflow: hidden;
   position: relative;
+  background-color: red;
 }
 .carta-menu .plato .imagen img {
   position: absolute;
@@ -759,7 +764,7 @@ body {
   display: flex;
   justify-content: space-between;
   font-size: 0.78rem;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 .carta-menu .plato .descripcion .superior .nombre-platillo {
   font-weight: bold;
@@ -789,14 +794,14 @@ body {
 }
 .carta-menu .plato .tiempo {
   font-size: 0.7rem;
-  color: #797979;
+  color: #404040;
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 .carta-menu .plato .tiempo svg {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   margin-right: 3px;
 }
 .carta-menu .plato .tiempo span {
@@ -804,11 +809,13 @@ body {
 }
 .carta-menu .plato .resumen {
   font-size: 0.63rem;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
+  line-height: 15px;
+  word-break: break-all;
 }
 .carta-menu .plato .ver-detalles {
   width: fit-content;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   cursor: pointer;
   padding: 5px 10px;
   border-radius: 5px;
@@ -858,7 +865,7 @@ body {
 
 .flexslider-top {
   position: relative !important;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .flexslider-top .slide {
   border-bottom-left-radius: 15px;
@@ -871,7 +878,7 @@ body {
   object-fit: cover;
 }
 .flexslider-top .flex-control-nav {
-  top: 85%;
+  top: 106%;
 }
 .flexslider-top .flex-control-nav a {
   background-color: black;

@@ -49,7 +49,7 @@
 				</div>
 			</div>
 			<div class="carta-menu">
-				<div class="plato">
+				<div class="plato js-abrir-plato" data-titulo="Corte New York" data-precio="250" data-tiempo="25" data-calorias="450" data-gramos="300" data-descripcion="Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa" data-ingredientes="Carne de res, papas, lechuga, jitomate, cebolla, aderezo de la casa" data-imagenes="platillo1.webp">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">
 					</div>
@@ -74,7 +74,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="plato">
+				<div class="plato js-abrir-plato" data-titulo="Fajitas & Chilly" data-precio="299" data-tiempo="30" data-calorias="350" data-gramos="350" data-descripcion="Tiras de carne asada con pimientos y cebollas, servidas con tortillas." data-ingredientes="Fajitas cocinadas al gusto, acompañado de Chilly" data-imagenes="platillo2.webp">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo2.webp" alt="">
 					</div>
@@ -104,7 +104,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="plato">
+				<div class="plato" data-titulo="Cilantro Pesto Pasta" data-precio="229">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo3.webp" alt="">
 					</div>
@@ -129,7 +129,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="plato">
+				<div class="plato" data-titulo="Bowl Especial Picante" data-precio="250">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
 					</div>
@@ -181,7 +181,7 @@
 		<div class="cerrar-ventana">
 			<span>X</span>
 		</div>
-		<div class="flexslider-top">
+		<div class="flexslider-top--about">
 				<div class="slides">
 					<li class="slide">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-us.webp" alt="">
@@ -419,38 +419,32 @@
 			</div>
 
 			<div class="flexslider-top">
-				<ul class="slides">
-					<li class="slide">
+				<ul class="slides" id="imagenes-platillo-individual">
+					<!-- <li class="slide">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">
-					</li>
-					<li class="slide">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo2.webp" alt="">
-					</li>
-					<li class="slide">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo3.webp" alt="">
-					</li>
+					</li> -->
 				</ulv>
 			</div>
 
 			<div class="descripcion-breve-platillo">
 				<div class="superior">
-					<div class="titulo">
+					<div class="titulo" id="titulo-platillo-individual">
 						<span>Corte New York</span>
 					</div>
-					<div class="precio">
+					<div class="precio" id="precio-platillo-individual">
 						<span>$250</span>
 					</div>
 				</div>
 				<div class="datos">
-					<div class="tiempo">
+					<div class="tiempo" id="tiempo-platillo-individual">
 						<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
 						<span>25 min aprox</span>
 					</div>
-					<div class="calorias">
+					<div class="calorias" id="calorias-platillo-individual">
 						<svg style="width: 20px; height: 20px; margin-bottom: 6px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.5 10.0003C14.5 9.20875 15.5528 8.99895 15.8321 9.73957C16.5077 11.5311 17 13.1337 17 14.0002C17 16.7616 14.7614 19.0002 12 19.0002C9.23858 19.0002 7 16.7616 7 14.0002C7 13.0693 7.56822 11.2887 8.32156 9.33698C9.29743 6.80879 9.78536 5.54469 10.3877 5.4766C10.5804 5.45482 10.7907 5.49399 10.9626 5.58371C11.5 5.86413 11.5 7.24285 11.5 10.0003C11.5 10.8287 12.1716 11.5003 13 11.5003C13.8284 11.5003 14.5 10.8287 14.5 10.0003Z" stroke="#797979"></path> <path d="M11 19L10.7372 18.343C10.2816 17.204 10.4737 15.9079 11.24 14.95V14.95C11.6296 14.463 12.3704 14.463 12.76 14.95V14.95C13.5263 15.9079 13.7184 17.204 13.2628 18.343L13 19" stroke="#797979"></path> </g></svg>
 						<span>450 cal</span>
 					</div>
-					<div class="gramos">
+					<div class="gramos" id="gramos-platillo-individual">
 						<svg style="width: 10px; height: 10px; margin-bottom: 6px" fill="#797979" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 92 92" enable-background="new 0 0 92 92" xml:space="preserve" stroke="#797979"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="XMLID_2112_" d="M81.2,31.1c-0.4-4-3.8-7.1-7.9-7.1H66v-1.8C66,10.5,57.4,1,46.2,1h-0.4C34.6,1,26,10.5,26,22.2V24h-7.3 c-4.1,0-7.4,3.1-7.9,7.1L5,86.5c-0.1,1.1,0.2,2.3,1,3.1C6.8,90.5,7.9,91,9,91h74c1.1,0,2.2-0.5,3-1.3c0.8-0.8,1.1-2,1-3.1L81.2,31.1 z M34,22.2C34,14.9,39.1,9,45.8,9h0.4C52.9,9,58,14.9,58,22.2V24H34V22.2z M13.4,83l5.3-51h54.4l5.3,51H13.4z"></path> </g></svg>
 						<span>300 gr</span>
 					</div>
@@ -461,11 +455,8 @@
 				<div class="titulo">
 					<span>Descripción</span>
 				</div>
-				<div class="parrafo">
+				<div class="parrafo" id="descripcion-platillo-individual">
 					<p>Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa</p>
-				</div>
-				<div class="parrafo">
-					<p>El corte New York es uno de los favoritos de nuestros clientes, su sabor y textura lo hacen un platillo único</p>
 				</div>
 			</div>
 
@@ -473,7 +464,7 @@
 				<div class="titulo">
 					<span>Ingredientes</span>
 				</div>
-				<div class="parrafo">
+				<div class="parrafo" id="ingredientes-platillo-individual">
 					<p>Carne de res, papas, lechuga, jitomate, cebolla, aderezo de la casa</p>
 				</div>
 			</div>

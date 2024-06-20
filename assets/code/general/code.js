@@ -10,10 +10,50 @@ $(window).load(function() {
 		itemWidth: 350,
 	});
 
-	$('.flexslider-top').flexslider({
-		animation: "slide",
-	  	directionNav: false, // Oculta los botones de dirección (previo y siguiente)
-  	});
+	
+	// $('.flexslider-top').flexslider({
+	// 	animation: "slide",
+	//   	directionNav: false, // Oculta los botones de dirección (previo y siguiente)
+
+  	// });
+
+
+	$('.js-abrir-plato').click(function(){
+
+		 mostrarPlato();
+
+
+		 var nombrePlatillo = $(this).data('titulo');
+		 var precioPlatillo = $(this).data('precio');
+
+		 $('#titulo-platillo-individual').find('span').html(nombrePlatillo);
+		 $('#precio-platillo-individual').find('span').html( "$"+precioPlatillo);
+		 $('#descripcion-platillo-individual').find('p').html( $(this).data('descripcion'));
+		 $('#tiempo-platillo-individual').find('span').html( $(this).data('tiempo') + " min aprox.");
+		 $('#calorias-platillo-individual').find('span').html( $(this).data('calorias') + " cal");
+		 $('#gramos-platillo-individual').find('span').html( $(this).data('gramos') + " gr");
+		 $('#ingredientes-platillo-individual').find('p').html( $(this).data('ingredientes'));
+		 $('#imagen-platillo-individual').attr('src', $(this).data('imagen'));
+		 
+
+		$('.flexslider-top').flexslider({
+			animation: "slide",
+			directionNav: false, // Oculta los botones de dirección (previo y siguiente)
+		});
+
+
+
+	});
+
+	$('#about-us').click(function(){
+		$('.pantalla-about-us').show();
+		$('.pantalla-principal').hide();
+		
+		$('.flexslider-top--about').flexslider({
+			animation: "slide",
+			directionNav: false, // Oculta los botones de dirección (previo y siguiente)
+		});
+	});
   });
 
   //ending
@@ -41,6 +81,7 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
+// Cerrar ventana
 var coll = document.getElementsByClassName("cerrar-ventana");
 var pantalla_principal = document.getElementsByClassName("pantalla-principal");
 
@@ -56,15 +97,9 @@ for (i = 0; i < coll.length; i++) {
   
 }
 
-var about = document.getElementById("about-us");
 var promos = document.getElementById("promos");
 var faq = document.getElementById("faq");
 
-// Agregar evento click a todos
-about.addEventListener("click", function () {
-  	document.getElementsByClassName("pantalla-about-us")[0].style.display = "block";
-  	pantalla_principal[0].style.display = "none";
-});
 
 promos.addEventListener("click", function () {
 	document.getElementsByClassName("pantalla-promos")[0].style.display = "block";
@@ -76,13 +111,13 @@ faq.addEventListener("click", function () {
   	pantalla_principal[0].style.display = "none";
 });
 
-var platos = document.getElementsByClassName("plato");
+// var platos = document.getElementsByClassName("plato");
 
-for (i = 0; i < platos.length; i++) {
-	platos[i].addEventListener("click", function () {
-		mostrarPlato();
-	});
-}
+// for (i = 0; i < platos.length; i++) {
+// 	platos[i].addEventListener("click", function () {
+// 		mostrarPlato();
+// 	});
+// }
 
 
 function mostrarPlato(){
