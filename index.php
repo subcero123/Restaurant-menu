@@ -14,10 +14,10 @@
 			<div class="contenedor-slider">
 				<div class="flexslider">
 					<div class="slides">
-						<li class="slide promo">
+						<li class="slide promo js-abrir-promo" data-imagen="promo1.webp" data-texto="Aprovecha esta promocion y disfruta de un 10% de descuento en tu cuenta total al presentar este cupón. Valido unicamente en sucursales participantes, no aplica con otras promociones.">
 							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo1.webp" alt="">
 						</li>
-						<li class="slide promo">
+						<li class="slide promo js-abrir-promo" data-imagen="promo2.webp" data-texto="Menus de hamburguesas al 2 x 1, por cada hamburguesa consumida se regalará una bebida.">
 							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo2.webp" alt="">
 						</li>
 						<li class="slide promo">
@@ -32,16 +32,16 @@
 				<span>Nuestro Menú</span>
 			</div>
 			<div class="categorias">
-				<div class="categoria categoria--selected">
+				<div class="categoria categoria--selected" data-categoria="recomendado">
 					<span>Recomendado</span>
 				</div>
-				<div class="categoria">
+				<div class="categoria" data-categoria="hamburguesas">
 					<span>Hamburguesas</span>
 				</div>
 				<div class="categoria">
 					<span>Burritos</span>
 				</div>
-				<div class="categoria">
+				<div class="categoria" data-categoria="pasta">
 					<span>Pasta</span>
 				</div>
 				<div class="categoria">
@@ -49,7 +49,7 @@
 				</div>
 			</div>
 			<div class="carta-menu">
-				<div class="plato js-abrir-plato" data-titulo="Corte New York" data-precio="250" data-tiempo="25" data-calorias="450" data-gramos="300" data-descripcion="Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa" data-ingredientes="Carne de res, papas, lechuga, jitomate, cebolla, aderezo de la casa" data-imagenes="platillo1.webp">
+				<div class="plato js-plato-menu js-abrir-plato plato--active" data-cat="recomendado" data-titulo="Corte New York" data-precio="250" data-tiempo="25" data-calorias="450" data-gramos="300" data-descripcion="Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa" data-ingredientes="Carne de res, papas, lechuga, jitomate, cebolla, aderezo de la casa" data-imagenes="platillo1.webp,platillo2.webp">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">
 					</div>
@@ -74,7 +74,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="plato js-abrir-plato" data-titulo="Fajitas & Chilly" data-precio="299" data-tiempo="30" data-calorias="350" data-gramos="350" data-descripcion="Tiras de carne asada con pimientos y cebollas, servidas con tortillas." data-ingredientes="Fajitas cocinadas al gusto, acompañado de Chilly" data-imagenes="platillo2.webp">
+				<div class="plato js-plato-menu js-abrir-plato plato--active" data-cat="recomendado" data-titulo="Fajitas & Chilly" data-precio="299" data-tiempo="30" data-calorias="350" data-gramos="350" data-descripcion="Tiras de carne asada con pimientos y cebollas, servidas con tortillas." data-ingredientes="Fajitas cocinadas al gusto, acompañado de Chilly" data-imagenes="platillo2.webp,platillo1.webp">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo2.webp" alt="">
 					</div>
@@ -104,7 +104,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="plato" data-titulo="Cilantro Pesto Pasta" data-precio="229">
+				<div class="plato js-plato-menu plato--active" data-cat="recomendado" data-titulo="Cilantro Pesto Pasta" data-precio="229">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo3.webp" alt="">
 					</div>
@@ -129,7 +129,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="plato" data-titulo="Bowl Especial Picante" data-precio="250">
+				<div class="plato js-plato-menu plato--active" data-cat="recomendado" data-titulo="Bowl Especial Picante" data-precio="250">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
 					</div>
@@ -137,6 +137,106 @@
 						<div class="superior">
 							<div class="nombre-platillo">
 								<span>Bowl Especial Picante</span>
+							</div>
+							<div class="precio">
+								$250
+							</div>
+						</div>
+						<div class="tiempo">
+						<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							<span>30 min aprox</span>
+						</div>
+						<div class="resumen">
+							<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
+						</div>
+						<div class="ver-detalles">
+							<span>Ver detalles</span>
+						</div>
+					</div>
+				</div>
+				<div class="plato js-plato-menu" data-cat="hamburguesas" data-titulo="Bowl Especial Picante" data-precio="250">
+					<div class="imagen">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
+					</div>
+					<div class="descripcion">
+						<div class="superior">
+							<div class="nombre-platillo">
+								<span>Bowl Especial Picante</span>
+							</div>
+							<div class="precio">
+								$250
+							</div>
+						</div>
+						<div class="tiempo">
+						<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							<span>30 min aprox</span>
+						</div>
+						<div class="resumen">
+							<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
+						</div>
+						<div class="ver-detalles">
+							<span>Ver detalles</span>
+						</div>
+					</div>
+				</div>
+				<div class="plato js-plato-menu" data-cat="pasta" data-titulo="Cilantro Pesto Pasta" data-precio="229">
+					<div class="imagen">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo3.webp" alt="">
+					</div>
+					<div class="descripcion">
+						<div class="superior">
+							<div class="nombre-platillo">
+								<span>Cilantro Pesto Pasta</span>
+							</div>
+							<div class="precio">
+								$229
+							</div>
+						</div>
+						<div class="tiempo">
+						<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							<span>22 min aprox</span>
+						</div>
+						<div class="resumen">
+							<span>Pasta de la casa aderezada con nuestra iconica...</span>
+						</div>
+						<div class="ver-detalles">
+							<span>Ver detalles</span>
+						</div>
+					</div>
+				</div>
+				<div class="plato js-plato-menu" data-cat="pasta" data-titulo="Bowl Especial Picante" data-precio="250">
+					<div class="imagen">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
+					</div>
+					<div class="descripcion">
+						<div class="superior">
+							<div class="nombre-platillo">
+								<span>Bowl Especial Picante</span>
+							</div>
+							<div class="precio">
+								$250
+							</div>
+						</div>
+						<div class="tiempo">
+						<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							<span>30 min aprox</span>
+						</div>
+						<div class="resumen">
+							<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
+						</div>
+						<div class="ver-detalles">
+							<span>Ver detalles</span>
+						</div>
+					</div>
+				</div>
+				<div class="plato js-plato-menu" data-cat="hamburguesas" data-titulo="Bowl Especial Picante" data-precio="250">
+					<div class="imagen">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
+					</div>
+					<div class="descripcion">
+						<div class="superior">
+							<div class="nombre-platillo">
+								<span>Hamburguesa a la carta</span>
 							</div>
 							<div class="precio">
 								$250
@@ -245,16 +345,16 @@
 		</div>
 
 		<div class="contenedor-promos">
-			<div class="promo">
+			<div class="promo js-abrir-promo js-pantalla-contenida" data-imagen="promo1.webp" data-texto="Aprovecha esta promocion y disfruta de un 10% de descuento en tu cuenta total al presentar este cupón. Valido unicamente en sucursales participantes, no aplica con otras promociones." >
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo1.webp" alt="">
 			</div>
-			<div class="promo">
+			<div class="promo js-abrir-promo js-pantalla-contenida" data-imagen="promo2.webp" data-texto="Menus de hamburguesas al 2 x 1, por cada hamburguesa consumida se regalará una bebida.">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo2.webp" alt="">
 			</div>
 		</div>
 
 		<div class="carta-menu">
-				<div class="plato">
+				<div class="plato js-abrir-plato js-pantalla-contenida" data-cat="recomendado" data-titulo="Corte New York" data-precio="250" data-tiempo="25" data-calorias="450" data-gramos="300" data-descripcion="Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa" data-ingredientes="Carne de res, papas, lechuga, jitomate, cebolla, aderezo de la casa" data-imagenes="platillo1.webp,platillo2.webp">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">
 					</div>
@@ -264,12 +364,7 @@
 								<span>Corte New York</span>
 							</div>
 							<div class="precio">
-							<div class="normal">
-									$299
-								</div>
-								<div class="descuento">
-									<span class="mini">ANTES</span> <span class="tachado">$350</span>
-								</div>
+								$250
 							</div>
 						</div>
 						<div class="tiempo">
@@ -284,7 +379,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="plato">
+				<div class="plato js-abrir-plato js-pantalla-contenida" data-cat="recomendado" data-titulo="Fajitas & Chilly" data-precio="299" data-tiempo="30" data-calorias="350" data-gramos="350" data-descripcion="Tiras de carne asada con pimientos y cebollas, servidas con tortillas." data-ingredientes="Fajitas cocinadas al gusto, acompañado de Chilly" data-imagenes="platillo2.webp,platillo1.webp">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo2.webp" alt="">
 					</div>
@@ -314,37 +409,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="plato">
-					<div class="imagen">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo3.webp" alt="">
-					</div>
-					<div class="descripcion">
-						<div class="superior">
-							<div class="nombre-platillo">
-								<span>Cilantro Pesto Pasta</span>
-							</div>
-							<div class="precio">
-							<div class="normal">
-									$259
-								</div>
-								<div class="descuento">
-									<span class="mini">ANTES</span> <span class="tachado">$450</span>
-								</div>
-							</div>
-						</div>
-						<div class="tiempo">
-						<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-							<span>22 min aprox</span>
-						</div>
-						<div class="resumen">
-							<span>Pasta de la casa aderezada con nuestra iconica...</span>
-						</div>
-						<div class="ver-detalles">
-							<span>Ver detalles</span>
-						</div>
-					</div>
-				</div>
-				<div class="plato">
+				<div class="plato js-pantalla-contenida" data-cat="pasta" data-titulo="Bowl Especial Picante" data-precio="250">
 					<div class="imagen">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
 					</div>
@@ -354,12 +419,32 @@
 								<span>Bowl Especial Picante</span>
 							</div>
 							<div class="precio">
-							<div class="normal">
-									$299
-								</div>
-								<div class="descuento">
-									<span class="mini">ANTES</span> <span class="tachado">$350</span>
-								</div>
+								$250
+							</div>
+						</div>
+						<div class="tiempo">
+						<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							<span>30 min aprox</span>
+						</div>
+						<div class="resumen">
+							<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
+						</div>
+						<div class="ver-detalles">
+							<span>Ver detalles</span>
+						</div>
+					</div>
+				</div>
+				<div class="plato js-pantalla-contenida" data-cat="hamburguesas" data-titulo="Bowl Especial Picante" data-precio="250">
+					<div class="imagen">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
+					</div>
+					<div class="descripcion">
+						<div class="superior">
+							<div class="nombre-platillo">
+								<span>Hamburguesa a la carta</span>
+							</div>
+							<div class="precio">
+								$250
 							</div>
 						</div>
 						<div class="tiempo">
@@ -384,7 +469,7 @@
 				<span>X</span>
 			</div>
 
-			<div class="contenedor-imagen-top">
+			<div class="contenedor-imagen-top" id="imagen-promo-individual">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo1.webp" alt="">
 			</div>
 
@@ -392,14 +477,8 @@
 				<div class="titulo">
 					<span>Términos y condiciones</span>
 				</div>
-				<div class="parrafo">
-					Aprovecha esta promocion y disfruta de un 10% de descuento en tu cuenta total al presentar este cupón
-				</div>
-				<div class="parrafo">
-					<span>Restricciones:</span> Válido únicamente en sucursales participantes, no aplica con otras promociones
-				</div>
-				<div class="parrafo">
-					<span><b class="bold">Vigencia:</b></span> 30 de septiembre de 2021
+				<div class="parrafo" id="texto-promo-individual">
+					<p>Aprovecha esta promocion y disfruta de un 10% de descuento en tu cuenta total al presentar este cupón</p>
 				</div>
 				<div class="parrafo">
 					<b class="bold">Importante: </b>  <span>esta promocion solo aplica para pago en efectivo</span>
@@ -420,9 +499,15 @@
 
 			<div class="flexslider-top">
 				<ul class="slides" id="imagenes-platillo-individual">
-					<!-- <li class="slide">
+					<li class="slide">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">
-					</li> -->
+					</li>
+					<li class="slide">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">
+					</li>
+					<li class="slide">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">
+					</li>
 				</ulv>
 			</div>
 
@@ -475,61 +560,61 @@
 					<span>Te recomendamos acompañar este platillo con</span>
 				</div>
 				<div class="carta-menu">
-					<div class="plato">
-						<div class="imagen">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo2.webp" alt="">
+				<div class="plato js-abrir-plato plato--active" data-cat="recomendado" data-titulo="Corte New York" data-precio="250" data-tiempo="25" data-calorias="450" data-gramos="300" data-descripcion="Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa" data-ingredientes="Carne de res, papas, lechuga, jitomate, cebolla, aderezo de la casa" data-imagenes="platillo1.webp,platillo2.webp">
+					<div class="imagen">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">
+					</div>
+					<div class="descripcion">
+						<div class="superior">
+							<div class="nombre-platillo">
+								<span>Corte New York</span>
+							</div>
+							<div class="precio">
+								$250
+							</div>
 						</div>
-						<div class="descripcion">
-							<div class="superior">
-								<div class="nombre-platillo">
-									<span>Fajitas & Chilly</span>
-								</div>
-								<div class="precio">
-									<div class="normal">
-										$299
-									</div>
-									<div class="descuento">
-										<span class="mini">ANTES</span> <span class="tachado">$350</span>
-									</div>
-								</div>
-							</div>
-							<div class="tiempo">
+						<div class="tiempo">
 							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-								<span>30 min aprox</span>
-							</div>
-							<div class="resumen">
-								<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-							</div>
-							<div class="ver-detalles">
-								<span>Ver detalles</span>
-							</div>
+							<span>25 min aprox</span>
+						</div>
+						<div class="resumen">
+							<span>Corte de lomo angosto americano al grill de ...</span>
+						</div>
+						<div class="ver-detalles">
+							<span>Ver detalles</span>
 						</div>
 					</div>
-					<div class="plato">
-						<div class="imagen">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo3.webp" alt="">
+				</div>
+				<div class="plato js-abrir-plato plato--active" data-cat="recomendado" data-titulo="Fajitas & Chilly" data-precio="299" data-tiempo="30" data-calorias="350" data-gramos="350" data-descripcion="Tiras de carne asada con pimientos y cebollas, servidas con tortillas." data-ingredientes="Fajitas cocinadas al gusto, acompañado de Chilly" data-imagenes="platillo2.webp,platillo1.webp">
+					<div class="imagen">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo2.webp" alt="">
+					</div>
+					<div class="descripcion">
+						<div class="superior">
+							<div class="nombre-platillo">
+								<span>Fajitas & Chilly</span>
+							</div>
+							<div class="precio">
+								<div class="normal">
+									$299
+								</div>
+								<div class="descuento">
+									<span class="mini">ANTES</span> <span class="tachado">$350</span>
+								</div>
+							</div>
 						</div>
-						<div class="descripcion">
-							<div class="superior">
-								<div class="nombre-platillo">
-									<span>Cilantro Pesto Pasta</span>
-								</div>
-								<div class="precio">
-									$229
-								</div>
-							</div>
-							<div class="tiempo">
-							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-								<span>22 min aprox</span>
-							</div>
-							<div class="resumen">
-								<span>Pasta de la casa aderezada con nuestra iconica...</span>
-							</div>
-							<div class="ver-detalles">
-								<span>Ver detalles</span>
-							</div>
+						<div class="tiempo">
+						<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							<span>30 min aprox</span>
+						</div>
+						<div class="resumen">
+							<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
+						</div>
+						<div class="ver-detalles">
+							<span>Ver detalles</span>
 						</div>
 					</div>
+				</div>
 				</div>
 			</div>
 	</div>

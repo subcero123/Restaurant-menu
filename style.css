@@ -395,6 +395,12 @@ body {
   position: relative;
   display: none;
 }
+.pantalla-about-us .flexslider-top--about {
+  margin-bottom: 2rem;
+}
+.pantalla-about-us .flexslider-top--about .flex-control-nav {
+  bottom: 76%;
+}
 .pantalla-about-us .cerrar-ventana {
   position: absolute;
   top: 10px;
@@ -488,6 +494,9 @@ body {
   font-weight: 600;
   text-align: center;
 }
+.pantalla-promos .plato {
+  display: flex !important;
+}
 .pantalla-promos .contenedor-promos {
   width: 100%;
   display: flex;
@@ -567,6 +576,9 @@ body {
 .pantalla-platillo-individual .cerrar-ventana svg {
   width: 30px;
   height: 30px;
+}
+.pantalla-platillo-individual .plato {
+  display: flex !important;
 }
 .pantalla-platillo-individual .contenedor-imagen-top {
   display: flex;
@@ -721,11 +733,12 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  min-height: 450px;
 }
 .carta-menu .plato {
   width: 100%;
   height: auto;
-  display: flex;
+  display: none;
   align-items: center;
   border-radius: 15px;
   margin-bottom: 0.8rem;
@@ -736,6 +749,9 @@ body {
   overflow: hidden;
   justify-content: center;
   align-items: stretch;
+}
+.carta-menu .plato--active {
+  display: flex;
 }
 .carta-menu .plato .imagen {
   width: 50%;
