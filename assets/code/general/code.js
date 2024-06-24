@@ -18,12 +18,19 @@ jQuery(function ($) {
 
     $(".js-abrir-plato").click(function () {
       // Verificar si contiene la clase js-pantalla-contenida
-      if ($(this).hasClass("js-pantalla-contenida")) {
-        // Mostrar la pantalla contenida
+      
+      if($(this).hasClass("js-pantalla-contenida")) {
         cerrarVentanas();
-      }
 
-      mostrarPlato();
+        // delay de 1 segundo
+        setTimeout(function() {
+          mostrarPlato();
+        } , 100);
+      }
+      else{
+        cerrarVentanas();
+        mostrarPlato();
+      }
 
       var nombrePlatillo = $(this).data("titulo");
       var precioPlatillo = $(this).data("precio");
@@ -88,13 +95,9 @@ jQuery(function ($) {
 
     $(".js-abrir-promo").click(function () {
       // Verificar si contiene la clase js-pantalla-contenida
-      if ($(this).hasClass("js-pantalla-contenida")) {
-        // Mostrar la pantalla contenida
-        cerrarVentanas();
-      }
 
+      cerrarVentanas();
       mostrarPromo();
-
       var textoPromo = $(this).data("texto");
       var imagen = $(this).data("imagen");
 
@@ -108,8 +111,9 @@ jQuery(function ($) {
     });
 
     $("#about-us").click(function () {
-      $(".pantalla-about-us").show();
-      $(".pantalla-principal").hide();
+      cerrarVentanas();
+
+      $(".pantalla-about-us").addClass("pantalla-card--active");
 
       $(".flexslider-top--about").flexslider({
         animation: "slide",
@@ -126,19 +130,16 @@ var i;
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function () {
+
     // Obtenemos el hijo de la card de clase titulo
-    var content = this.children[0].children[0];
+    var content = this.children[0];
     // Toggle de la clase active
     content.classList.toggle("titulo--active");
 
     // Obtenemos el siguiente hijo de la card
     var respuesta = this.children[1];
-    // Toggle de la clase show
-    if (respuesta.style.display === "block") {
-      respuesta.style.display = "none";
-    } else {
-      respuesta.style.display = "block";
-    }
+    // Toggle de la clase active
+    respuesta.classList.toggle("respuesta--active");
   });
 }
 
@@ -150,9 +151,8 @@ for (i = 0; i < coll.length; i++) {
   // Obtenemos el padre de la ventana
   // Poner display none al padre
   coll[i].addEventListener("click", function () {
-    parent = this.parentElement;
-    parent.style.display = "none";
-    pantalla_principal[0].style.display = "block";
+    cerrarVentanas();
+    pantalla_principal[0].classList.add("pantalla-card--active");
   });
 }
 
@@ -160,15 +160,17 @@ var promos = document.getElementById("promos");
 var faq = document.getElementById("faq");
 
 promos.addEventListener("click", function () {
-  document.getElementsByClassName("pantalla-promos")[0].style.display = "block";
-  pantalla_principal[0].style.display = "none";
+  cerrarVentanas();
+  document
+    .getElementsByClassName("pantalla-promos")[0]
+    .classList.add("pantalla-card--active");
 });
 
 faq.addEventListener("click", function () {
-  document.getElementsByClassName(
-    "pantalla-preguntas-frecuentes"
-  )[0].style.display = "block";
-  pantalla_principal[0].style.display = "none";
+  cerrarVentanas();
+  document
+    .getElementsByClassName("pantalla-preguntas-frecuentes")[0]
+    .classList.add("pantalla-card--active");
 });
 
 // var platos = document.getElementsByClassName("plato");
@@ -180,27 +182,23 @@ faq.addEventListener("click", function () {
 // }
 
 function mostrarPlato() {
-  document.getElementsByClassName(
-    "pantalla-platillo-individual"
-  )[0].style.display = "block";
-  pantalla_principal[0].style.display = "none";
+  document
+    .getElementsByClassName("pantalla-platillo-individual")[0]
+    .classList.add("pantalla-card--active");
 }
 
 function mostrarPromo() {
-  document.getElementsByClassName(
-    "pantalla-promo-individual"
-  )[0].style.display = "block";
-  pantalla_principal[0].style.display = "none";
+  document
+    .getElementsByClassName("pantalla-promo-individual")[0]
+    .classList.add("pantalla-card--active");
 }
 
 var regresar = document.getElementsByClassName("contenedor-regresar");
 
 for (i = 0; i < regresar.length; i++) {
   regresar[i].addEventListener("click", function () {
-    // parent = this.parentElement;
-    // parent.style.display = "none";
-    // pantalla_principal[0].style.display = "block";
     cerrarVentanas();
+    pantalla_principal[0].classList.add("pantalla-card--active");
   });
 }
 
@@ -221,13 +219,12 @@ for (i = 0; i < categorias.length; i++) {
     var platos = document.getElementsByClassName("js-plato-menu");
 
     for (i = 0; i < platos.length; i++) {
+      platos[i].classList.remove("plato--active");
+
       // Si la categoria del plato es igual a la categoria seleccionada
       if (platos[i].dataset.cat == categoria) {
         // Mostrar el plato
-        platos[i].style.display = "flex";
-      } else {
-        // Ocultar el plato
-        platos[i].style.display = "none";
+        platos[i].classList.toggle("plato--active");
       }
     }
   });
@@ -253,10 +250,20 @@ function cerrarVentanas() {
     "pantalla-promo-individual"
   );
 
-  pantallaAboutUs[0].style.display = "none";
-  pantallaPromos[0].style.display = "none";
-  pantallaPreguntasFrecuentes[0].style.display = "none";
-  pantallaPlatilloIndividual[0].style.display = "none";
-  pantallaPromoIndividual[0].style.display = "none";
-  pantalla_principal[0].style.display = "block";
+  var pantalla_principal =
+    document.getElementsByClassName("pantalla-principal");
+
+  pantallaAboutUs[0].classList.remove("pantalla-card--active");
+  pantallaPromos[0].classList.remove("pantalla-card--active");
+  pantallaPreguntasFrecuentes[0].classList.remove("pantalla-card--active");
+  pantallaPlatilloIndividual[0].classList.remove("pantalla-card--active");
+  pantallaPromoIndividual[0].classList.remove("pantalla-card--active");
+  pantalla_principal[0].classList.remove("pantalla-card--active");
+
+  // pantallaAboutUs[0].style.display = "none";
+  // pantallaPromos[0].style.display = "none";
+  // pantallaPreguntasFrecuentes[0].style.display = "none";
+  // pantallaPlatilloIndividual[0].style.display = "none";
+  // pantallaPromoIndividual[0].style.display = "none";
+  // pantalla_principal[0].style.display = "block";
 }
