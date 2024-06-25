@@ -32,6 +32,8 @@ jQuery(function ($) {
         mostrarPlato();
       }
 
+      $("body").addClass("quitar-overflow");
+
       var nombrePlatillo = $(this).data("titulo");
       var precioPlatillo = $(this).data("precio");
 
@@ -98,6 +100,7 @@ jQuery(function ($) {
 
       cerrarVentanas();
       mostrarPromo();
+      $("body").addClass("quitar-overflow");
       var textoPromo = $(this).data("texto");
       var imagen = $(this).data("imagen");
 
@@ -114,6 +117,7 @@ jQuery(function ($) {
       cerrarVentanas();
 
       $(".pantalla-about-us").addClass("pantalla-card--active");
+      $("body").addClass("quitar-overflow");
 
       $(".flexslider-top--about").flexslider({
         animation: "slide",
@@ -152,7 +156,6 @@ for (i = 0; i < coll.length; i++) {
   // Poner display none al padre
   coll[i].addEventListener("click", function () {
     cerrarVentanas();
-    pantalla_principal[0].classList.add("pantalla-card--active");
   });
 }
 
@@ -164,6 +167,7 @@ promos.addEventListener("click", function () {
   document
     .getElementsByClassName("pantalla-promos")[0]
     .classList.add("pantalla-card--active");
+  document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
 });
 
 faq.addEventListener("click", function () {
@@ -171,6 +175,7 @@ faq.addEventListener("click", function () {
   document
     .getElementsByClassName("pantalla-preguntas-frecuentes")[0]
     .classList.add("pantalla-card--active");
+  document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
 });
 
 // var platos = document.getElementsByClassName("plato");
@@ -185,12 +190,14 @@ function mostrarPlato() {
   document
     .getElementsByClassName("pantalla-platillo-individual")[0]
     .classList.add("pantalla-card--active");
+  document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
 }
 
 function mostrarPromo() {
   document
     .getElementsByClassName("pantalla-promo-individual")[0]
     .classList.add("pantalla-card--active");
+    document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
 }
 
 var regresar = document.getElementsByClassName("contenedor-regresar");
@@ -198,7 +205,6 @@ var regresar = document.getElementsByClassName("contenedor-regresar");
 for (i = 0; i < regresar.length; i++) {
   regresar[i].addEventListener("click", function () {
     cerrarVentanas();
-    pantalla_principal[0].classList.add("pantalla-card--active");
   });
 }
 
@@ -250,6 +256,8 @@ function cerrarVentanas() {
     "pantalla-promo-individual"
   );
 
+  var body = document.getElementsByTagName("body");
+
   var pantalla_principal =
     document.getElementsByClassName("pantalla-principal");
 
@@ -259,6 +267,9 @@ function cerrarVentanas() {
   pantallaPlatilloIndividual[0].classList.remove("pantalla-card--active");
   pantallaPromoIndividual[0].classList.remove("pantalla-card--active");
   pantalla_principal[0].classList.remove("pantalla-card--active");
+  body[0].classList.remove("quitar-overflow");
+
+
 
   // pantallaAboutUs[0].style.display = "none";
   // pantallaPromos[0].style.display = "none";

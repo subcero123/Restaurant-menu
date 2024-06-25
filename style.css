@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
-    Theme Name: Starter theme
+    Theme Name: Restaurante Menu
     Theme URI: pending
     Description: Starter theme great
     Version: 1.0.0
@@ -277,12 +277,10 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-.page-wrapper {
+.pantalla-principal {
   position: relative;
-  max-height: 100vh;
-  overflow: hidden;
+  z-index: 0;
 }
-
 .pantalla-principal .logo {
   display: flex;
   justify-content: center;
@@ -293,48 +291,49 @@ body {
   width: 180px;
   height: 110px;
 }
-.pantalla-principal .contenedor-principal {
-  max-width: 393px;
-  max-height: 852px;
-  overflow: scroll;
-}
-.pantalla-principal .contenedor-principal .contenedor-slider {
+.pantalla-principal .contenedor-slider {
   height: 170px;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-.pantalla-principal .contenedor-principal .contenedor-slider .flexslider {
+.pantalla-principal .contenedor-slider .flexslider {
   background: transparent !important;
   border: 0px solid #000 !important;
-  margin: 0 auto;
-  width: 95%;
+  margin-left: auto;
+  width: 97.5%;
 }
-.pantalla-principal .contenedor-principal .contenedor-slider .slides {
+.pantalla-principal .contenedor-slider .slides {
   width: 100%;
   height: 100%;
   border-radius: 15px;
   display: -webkit-inline-box;
 }
-.pantalla-principal .contenedor-principal .contenedor-slider .slides .slide {
+.pantalla-principal .contenedor-slider .slides .slide {
   overflow-y: hidden;
   border-radius: 15px;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
   border: 1px solid #e3dbdb;
 }
-.pantalla-principal .contenedor-principal .contenedor-slider .flex-control-nav a {
+.pantalla-principal .contenedor-slider .flex-control-nav a {
   background-color: black;
 }
-.pantalla-principal .contenedor-principal .contenedor-slider .flex-control-nav .flex-active {
+.pantalla-principal .contenedor-slider .flex-control-nav .flex-active {
   background-color: orangered !important;
+}
+.pantalla-principal .contenedor-principal {
+  max-height: 852px;
+  overflow: scroll;
 }
 .pantalla-principal .contenedor-principal .contenedor-carta-menu {
   margin-right: 15px;
   margin-left: 15px;
   margin-top: 3.5rem;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 }
 .pantalla-principal .contenedor-principal .contenedor-carta-menu .titulo-menu {
   font-size: 1.5rem;
@@ -345,7 +344,8 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
   overflow-x: scroll;
 }
 .pantalla-principal .contenedor-principal .contenedor-carta-menu .categorias .categoria {
@@ -365,43 +365,15 @@ body {
   background-color: black;
   color: white;
 }
-.pantalla-principal .contenedor-footer {
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-  background-color: black;
-  color: white;
-  padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.pantalla-principal .contenedor-footer .footer {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 0.75rem;
-}
-.pantalla-principal .contenedor-footer .footer .seccion {
-  display: flex;
-  align-items: center;
-}
-.pantalla-principal .contenedor-footer .footer .seccion svg {
-  width: 18px;
-  height: 18px;
-  margin-right: 5px;
-}
 
 .pantalla-about-us {
   position: relative;
 }
 .pantalla-about-us .flexslider-top--about {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .pantalla-about-us .flexslider-top--about .flex-control-nav {
-  bottom: 76%;
+  bottom: 70%;
 }
 .pantalla-about-us .cerrar-ventana {
   position: absolute;
@@ -483,7 +455,7 @@ body {
   object-fit: cover;
 }
 
-.pantalla-promos {
+.pantalla-promos .contenedor-pantalla {
   width: 95%;
   margin: 0 auto;
 }
@@ -660,6 +632,9 @@ body {
   flex-direction: column;
   margin-top: 1.5rem;
 }
+.pantalla-platillo-individual .sugerencias .carta-menu {
+  min-height: 0;
+}
 .pantalla-platillo-individual .sugerencias .encabezado {
   display: flex;
   font-size: 0.8rem;
@@ -741,6 +716,7 @@ body {
   align-items: center;
   width: 100%;
   min-height: 450px;
+  position: relative;
 }
 .carta-menu .plato {
   width: 100%;
@@ -762,9 +738,11 @@ body {
   transition: all 0.0001s ease-out;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 .carta-menu .plato--active {
   opacity: 1;
+  z-index: 1;
   transform: translateY(0px);
   position: relative;
   transition: all 0.5s ease-out;
@@ -928,11 +906,68 @@ body {
 
 .pantalla-card {
   opacity: 0;
-  position: absolute;
+  position: fixed;
   transition: all 0.2s ease-out;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  overflow-y: scroll;
+  z-index: -1;
+  background-color: #f1f1f1;
+  padding-bottom: 50px;
+  width: 100vw;
 }
 .pantalla-card--active {
   opacity: 1;
-  position: relative;
-  transition: all 1s ease-out;
+  z-index: 2;
+  transition: all 0.4s ease-out;
+}
+
+.quitar-overflow {
+  overflow: hidden !important;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.contenedor-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+.contenedor-footer .footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.75rem;
+}
+.contenedor-footer .footer .seccion {
+  display: flex;
+  align-items: center;
+}
+.contenedor-footer .footer .seccion svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.slide {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  overflow: hidden;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
