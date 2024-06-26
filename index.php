@@ -8,6 +8,11 @@
 
 
 	<div class="page-wrapper">
+
+		<div class="overlay">
+
+		</div>
+
 		<div class="pantalla-principal">
 				<div class="logo">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.webp" alt="">
@@ -70,9 +75,6 @@
 								<div class="resumen">
 									<span>Corte de lomo angosto americano al grill de ...</span>
 								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
-								</div>
 							</div>
 						</div>
 						<div class="plato js-plato-menu js-abrir-plato plato--active" data-cat="recomendado" data-titulo="Fajitas & Chilly" data-precio="299" data-tiempo="30" data-calorias="350" data-gramos="350" data-descripcion="Tiras de carne asada con pimientos y cebollas, servidas con tortillas." data-ingredientes="Fajitas cocinadas al gusto, acompañado de Chilly" data-imagenes="platillo2.webp,platillo1.webp">
@@ -100,9 +102,6 @@
 								<div class="resumen">
 									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
 								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
-								</div>
 							</div>
 						</div>
 						<div class="plato js-plato-menu plato--active" data-cat="recomendado" data-titulo="Cilantro Pesto Pasta" data-precio="229">
@@ -124,9 +123,6 @@
 								</div>
 								<div class="resumen">
 									<span>Pasta de la casa aderezada con nuestra iconica...</span>
-								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
 								</div>
 							</div>
 						</div>
@@ -150,9 +146,6 @@
 								<div class="resumen">
 									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
 								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
-								</div>
 							</div>
 						</div>
 						<div class="plato js-plato-menu" data-cat="hamburguesas" data-titulo="Bowl Especial Picante" data-precio="250">
@@ -174,9 +167,6 @@
 								</div>
 								<div class="resumen">
 									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
 								</div>
 							</div>
 						</div>
@@ -200,9 +190,6 @@
 								<div class="resumen">
 									<span>Pasta de la casa aderezada con nuestra iconica...</span>
 								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
-								</div>
 							</div>
 						</div>
 						<div class="plato js-plato-menu" data-cat="pasta" data-titulo="Bowl Especial Picante" data-precio="250">
@@ -225,9 +212,6 @@
 								<div class="resumen">
 									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
 								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
-								</div>
 							</div>
 						</div>
 						<div class="plato js-plato-menu" data-cat="hamburguesas" data-titulo="Bowl Especial Picante" data-precio="250">
@@ -249,9 +233,6 @@
 								</div>
 								<div class="resumen">
 									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
 								</div>
 							</div>
 						</div>
@@ -360,9 +341,6 @@
 								<div class="resumen">
 									<span>Corte de lomo angosto americano al grill de ...</span>
 								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
-								</div>
 							</div>
 						</div>
 						<div class="plato js-abrir-plato js-pantalla-contenida" data-cat="recomendado" data-titulo="Fajitas & Chilly" data-precio="299" data-tiempo="30" data-calorias="350" data-gramos="350" data-descripcion="Tiras de carne asada con pimientos y cebollas, servidas con tortillas." data-ingredientes="Fajitas cocinadas al gusto, acompañado de Chilly" data-imagenes="platillo2.webp,platillo1.webp">
@@ -390,9 +368,6 @@
 								<div class="resumen">
 									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
 								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
-								</div>
 							</div>
 						</div>
 						<div class="plato js-pantalla-contenida" data-cat="pasta" data-titulo="Bowl Especial Picante" data-precio="250">
@@ -415,9 +390,6 @@
 								<div class="resumen">
 									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
 								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
-								</div>
 							</div>
 						</div>
 						<div class="plato js-pantalla-contenida" data-cat="hamburguesas" data-titulo="Bowl Especial Picante" data-precio="250">
@@ -439,9 +411,6 @@
 								</div>
 								<div class="resumen">
 									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-								</div>
-								<div class="ver-detalles">
-									<span>Ver detalles</span>
 								</div>
 							</div>
 						</div>
@@ -478,7 +447,7 @@
 
 		</div>
 
-		<div class="pantalla-platillo-individual pantalla-card">
+		<div class="pantalla-platillo-individual pantalla-card pantalla-card--derecha">
 				<div class="cerrar-ventana">
 					<span>X</span>
 				</div>
@@ -566,9 +535,6 @@
 							<div class="resumen">
 								<span>Corte de lomo angosto americano al grill de ...</span>
 							</div>
-							<div class="ver-detalles">
-								<span>Ver detalles</span>
-							</div>
 						</div>
 					</div>
 					<div class="plato js-abrir-plato plato--active js-pantalla-contenida" data-cat="recomendado" data-titulo="Fajitas & Chilly" data-precio="299" data-tiempo="30" data-calorias="350" data-gramos="350" data-descripcion="Tiras de carne asada con pimientos y cebollas, servidas con tortillas." data-ingredientes="Fajitas cocinadas al gusto, acompañado de Chilly" data-imagenes="platillo2.webp,platillo1.webp">
@@ -595,9 +561,6 @@
 							</div>
 							<div class="resumen">
 								<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-							</div>
-							<div class="ver-detalles">
-								<span>Ver detalles</span>
 							</div>
 						</div>
 					</div>

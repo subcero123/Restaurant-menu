@@ -118,6 +118,7 @@ jQuery(function ($) {
 
       $(".pantalla-about-us").addClass("pantalla-card--active");
       $("body").addClass("quitar-overflow");
+      $(".overlay").addClass("overlay--active");
 
       $(".flexslider-top--about").flexslider({
         animation: "slide",
@@ -168,6 +169,8 @@ promos.addEventListener("click", function () {
     .getElementsByClassName("pantalla-promos")[0]
     .classList.add("pantalla-card--active");
   document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
+  document.getElementsByClassName("overlay")[0].classList.add("overlay--active");
+
 });
 
 faq.addEventListener("click", function () {
@@ -176,6 +179,8 @@ faq.addEventListener("click", function () {
     .getElementsByClassName("pantalla-preguntas-frecuentes")[0]
     .classList.add("pantalla-card--active");
   document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
+  document.getElementsByClassName("overlay")[0].classList.add("overlay--active");
+
 });
 
 // var platos = document.getElementsByClassName("plato");
@@ -191,6 +196,8 @@ function mostrarPlato() {
     .getElementsByClassName("pantalla-platillo-individual")[0]
     .classList.add("pantalla-card--active");
   document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
+  // Agregar a overlay la clase overlay--active
+  document.getElementsByClassName("overlay")[0].classList.add("overlay--active");
 }
 
 function mostrarPromo() {
@@ -198,6 +205,7 @@ function mostrarPromo() {
     .getElementsByClassName("pantalla-promo-individual")[0]
     .classList.add("pantalla-card--active");
     document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
+    document.getElementsByClassName("overlay")[0].classList.add("overlay--active");
 }
 
 var regresar = document.getElementsByClassName("contenedor-regresar");
@@ -268,6 +276,7 @@ function cerrarVentanas() {
   pantallaPromoIndividual[0].classList.remove("pantalla-card--active");
   pantalla_principal[0].classList.remove("pantalla-card--active");
   body[0].classList.remove("quitar-overflow");
+  document.getElementsByClassName("overlay")[0].classList.remove("overlay--active");
 
 
 
