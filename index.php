@@ -249,15 +249,22 @@
 			</div>
 			<div class="flexslider-top--about">
 					<div class="slides">
-						<li class="slide">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-us.webp" alt="">
-						</li>
-						<li class="slide">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-us2.webp" alt="">
-						</li>
-						<li class="slide">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-us.webp" alt="">
-						</li>
+						<?php
+							// Obtener el grupo de campos 'imagenes_carousel' de la página con el ID 15
+							$imagenes_carousel = get_field('imagenes-carousel', 19);
+							// Si 'imagenes_carousel' no está vacío, imprimir los valores
+							if ($imagenes_carousel) {
+								echo '<ul class="slides">';
+								foreach ($imagenes_carousel as $imagen) {
+									if($imagen['url'] != ''){
+										echo '<li class="slide"><img src="' . esc_url($imagen['url']) . '" alt="' . esc_attr($imagen['alt']) . '"></li>';
+									}
+								}
+								echo '</ul>';
+							} else {
+								echo 'No hay imágenes disponibles.';
+							}
+						?>
 					</div>
 			</div>
 			<div class="redes-sociales">
@@ -279,22 +286,24 @@
 				<div class="titulo">
 					<b>Acerca de nosotros</b>
 				</div>
-
 				<div class="parrafo">
-					<p>La buena comida siempre nos gusto y desde nuestros inicios en un pequeño local en el sur de la ciudad hemos dado lo mejor de nosotros para cumplir con las exigencias de los paladares de nuestros clientes</p>
+					<?php
+						$texto_about = the_field('texto-about', 19);
+					?>
+					<p><?php echo esc_html($texto_about); ?></p>
 				</div>
-				<div class="parrafo">
-					<p>En nuestro menú encontraras una gran variedad de platillos que van desde las clásicas hamburguesas hasta platillos más elaborados como pastas y ensaladas</p>
-				</div>
-				<div class="parrafo">
-					<p>Siempre estamos en constante evolución y buscamos mejorar para ofrecerte la mejor experiencia en cada visita</p>
-				</div>
-				<div class="parrafo">
-					<p>Gracias por preferirnos</p>
-				</div>
-
 				<div class="imagen-final">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-us2.webp" alt="">
+				<?php
+					// Obtener el campo 'imagen_final' de la página con el ID 15
+					$imagen_final = get_field('imagen-final', 19);
+
+					// Si 'imagen_final' no está vacío, imprimir la imagen
+					if ($imagen_final) {
+						echo '<img src="' . esc_url($imagen_final['url']) . '" alt="' . esc_attr($imagen_final['alt']) . '">';
+					} else {
+						echo 'No hay imagen disponible.';
+					}
+				?>
 				</div>
 			</div>
 
