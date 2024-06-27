@@ -852,6 +852,10 @@ body {
   font-weight: bolder;
   background-color: rgba(255, 255, 255, 0.5);
 }
+.cerrar-ventana span {
+  position: relative;
+  top: -2px;
+}
 
 .bold {
   font-weight: bold;
@@ -920,7 +924,7 @@ body {
   background-color: #f1f1f1;
   padding-bottom: 50px;
   width: 95vw;
-  height: 85vh;
+  height: 85dvh;
   transform: translateY(30%);
   border: 1px solid black;
 }
@@ -929,7 +933,7 @@ body {
   left: 5vw;
   transform: translateY(0%) translateX(30%);
   transition: all 0.3s ease-out;
-  height: 100vh;
+  height: 100dvh;
   border: 1px solid black;
 }
 .pantalla-card--active {

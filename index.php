@@ -245,7 +245,7 @@
 
 		<div class="pantalla-about-us pantalla-card">
 			<div class="cerrar-ventana">
-				<span>X</span>
+				<span>&times;</span>
 			</div>
 			<div class="flexslider-top--about">
 					<div class="slides">
@@ -304,7 +304,7 @@
 
 			<div class="contenedor-pantalla">
 				<div class="cerrar-ventana">
-					<span>X</span>
+					<span>&times;</span>
 				</div>
 
 				<div class="titulo">
@@ -421,7 +421,7 @@
 
 		<div class="pantalla-promo-individual pantalla-card">
 				<div class="cerrar-ventana">
-					<span>X</span>
+					<span>&times;</span>
 				</div>
 
 				<div class="contenedor-imagen-top" id="imagen-promo-individual">
@@ -449,7 +449,7 @@
 
 		<div class="pantalla-platillo-individual pantalla-card pantalla-card--derecha">
 				<div class="cerrar-ventana">
-					<span>X</span>
+					<span>&times;</span>
 				</div>
 
 				<div class="flexslider-top">
@@ -570,7 +570,7 @@
 
 		<div class="pantalla-preguntas-frecuentes pantalla-card">
 			<div class="cerrar-ventana">
-				<span>X</span>
+				<span>&times;</span>
 			</div>
 			<div class="titulo-principal">
 				<span>Preguntas Frecuentes</span>
