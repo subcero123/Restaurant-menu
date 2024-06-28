@@ -273,14 +273,14 @@ Modules styles
 }
 
 body {
-  background-color: #f1f1f1;
+  background-color: var(--color-fondo);
   font-family: "Inter", sans-serif;
 }
 
 .pantalla-principal {
   position: relative;
   z-index: 1;
-  background-color: #f1f1f1;
+  background-color: var(--color-fondo);
 }
 .pantalla-principal .logo {
   display: flex;
@@ -920,7 +920,7 @@ body {
   height: 100vh;
   overflow-y: scroll;
   z-index: -1;
-  background-color: #f1f1f1;
+  background-color: var(--color-fondo);
   padding-bottom: 50px;
   width: 95vw;
   height: 85dvh;

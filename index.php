@@ -1,9 +1,21 @@
 <?php
 
-/*
- * Displays single posts
- */
+// Obtener los colores desde los campos personalizados de ACF
+$color_fondo = get_field('color-fondo', 19);  // Reemplaza 'primary_color' con el nombre real del campo
+$color_titulo = get_field('color-titulo', 19);  // Reemplaza 'secondary_color' con el nombre real del campo
+$color_texto = get_field('color-texto', 19);  // Reemplaza 'tertiary_color' con el nombre real del campo
+$color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con el nombre real del campo
 ?>
+
+<style>
+        :root {
+            --color-fondo: <?php echo esc_attr($color_fondo); ?>;
+            --color-titulo: <?php echo esc_attr($titulo); ?>;
+			--ccolor-texto: <?php echo esc_attr($color_texto); ?>;
+			--color-acento: <?php echo esc_attr($color_acento); ?>;
+        }
+</style>
+
 <?php get_header() ?>
 
 
@@ -15,7 +27,21 @@
 
 		<div class="pantalla-principal">
 				<div class="logo">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.webp" alt="">
+				<?php
+					// Obtener el logo desde el campo personalizado de ACF
+					$logo = get_field('logo', 19);  // Reemplaza 'logo_field_name' con el nombre del campo ACF para el logo
+
+					if ($logo) {
+						// Obtener la URL del logo
+						$logo_url = $logo['url'];  // Si el campo es de tipo "Imagen" y devuelve un array
+						$logo_alt = $logo['alt'];  // Obtener el texto alternativo, si está disponible
+					} else {
+						// Si no se encuentra el logo, usar un logo por defecto
+						$logo_url = get_stylesheet_directory_uri() . '/assets/images/logo.webp';
+						$logo_alt = 'Logo por defecto';
+					}
+				?>
+				<img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($logo_alt); ?>">
 			</div>
 			<div class="contenedor-slider">
 					<div class="flexslider">
@@ -256,7 +282,7 @@
 							if ($imagenes_carousel) {
 								echo '<ul class="slides">';
 								foreach ($imagenes_carousel as $imagen) {
-									if($imagen['url'] != ''){
+									if ($imagen['url'] != '') {
 										echo '<li class="slide"><img src="' . esc_url($imagen['url']) . '" alt="' . esc_attr($imagen['alt']) . '"></li>';
 									}
 								}
@@ -585,71 +611,33 @@
 				<span>Preguntas Frecuentes</span>
 			</div>
 
-			<div class="card">
-				<div class="titulo">
-					<span>¿Que métodos de pago aceptan?</span>
-					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#404040"></path> </g></svg>
-				</div>
-				<div class="respuesta">
-					<p>Aceptamos todas las tarjetas de crédito nacionales incluidas American Express, pagos en efectivo, vales de despensa y transferencias.</p>
-				</div>
-			</div>
+			<?php
+				// Suponiendo que tienes acceso a los datos de ACF y estás en un entorno donde puedes utilizar PHP
 
-			
-			<div class="card">
-				<div class="titulo">
-					<span>¿Cuales son sus horarios?</span>
-					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#404040"></path> </g></svg>
-				</div>
-				<div class="respuesta">
-					<p>Aceptamos todas las tarjetas de crédito nacionales incluidas American Express, pagos en efectivo, vales de despensa y transferencias.</p>
-				</div>
-			</div>
+				// Obtener el campo de preguntas frecuentes (FAQ) de la página con ID 19
+				$faq = get_field('faq', 19);
 
-			
-			<div class="card">
-				<div class="titulo">
-					<span>¿Cuál es su ubicación?</span>
-					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#404040"></path> </g></svg>
-				</div>
-				<div class="respuesta">
-					<p>Aceptamos todas las tarjetas de crédito nacionales incluidas American Express, pagos en efectivo, vales de despensa y transferencias.</p>
-				</div>
-			</div>
+				// Verificar si hay preguntas frecuentes disponibles
+				if ($faq) {
+					// Iterar sobre cada elemento FAQ
+					foreach ($faq as $item) {
+						// Extraer los valores del ACF
+						$pregunta = $item['faq-item']['pregunta'];
+						$respuesta = $item['faq-item']['respuesta'];
 
-			
-			<div class="card">
-				<div class="titulo">
-					<span>¿Tienes algún evento esté mes?</span>
-					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#404040"></path> </g></svg>
-				</div>
-				<div class="respuesta">
-					<p>Aceptamos todas las tarjetas de crédito nacionales incluidas American Express, pagos en efectivo, vales de despensa y transferencias.</p>
-				</div>
-			</div>
-
-			
-			<div class="card">
-				<div class="titulo">
-					<span>¿Tienen redes sociales?</span>
-					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#404040"></path> </g></svg>
-				</div>
-				<div class="respuesta">
-					<p>Aceptamos todas las tarjetas de crédito nacionales incluidas American Express, pagos en efectivo, vales de despensa y transferencias.</p>
-				</div>
-			</div>
-
-			<div class="card">
-				<div class="titulo">
-					<span>¿Hacen pedidos especiales?</span>
-					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#404040"></path> </g></svg>
-				</div>
-				<div class="respuesta">
-					<p>Aceptamos todas las tarjetas de crédito nacionales incluidas American Express, pagos en efectivo, vales de despensa y transferencias.</p>
-				</div>
-			</div>
-
-
+						// Imprimir la estructura HTML de la tarjeta
+						// Imprimir la estructura HTML de la tarjeta
+						echo '<div class="card">';
+						echo '<div class="titulo">';
+						echo '<span>' . esc_html($pregunta) . '</span>';
+						echo '</div>';
+						echo '<div class="respuesta">';
+						echo '<p>' . esc_html($respuesta) . '</p>';
+						echo '</div>';
+						echo '</div>';
+					}
+				}
+			?>
 			<div class="contenedor-regresar">
 					<span><span class="back"><</span> Regresar al menú</span>
 					
