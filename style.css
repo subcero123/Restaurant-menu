@@ -344,6 +344,19 @@ body {
   margin-bottom: 1.5rem;
   font-weight: 600;
 }
+.pantalla-principal .contenedor-principal .contenedor-carta-menu .contenedor-categoria {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+.pantalla-principal .contenedor-principal .contenedor-carta-menu .contenedor-categoria .difuminado {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 25px;
+  width: 25px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-fondo) 100%);
+}
 .pantalla-principal .contenedor-principal .contenedor-carta-menu .categorias {
   display: flex;
   justify-content: space-between;
@@ -351,11 +364,12 @@ body {
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
   overflow-x: scroll;
+  font-size: 0.75rem;
 }
 .pantalla-principal .contenedor-principal .contenedor-carta-menu .categorias .categoria {
   height: 25px;
   border-radius: 5px;
-  padding: 18px 10px;
+  padding: 15px 8px;
   margin-right: 10px;
   text-align: center;
   display: flex;
@@ -375,6 +389,7 @@ body {
 }
 .pantalla-about-us .flexslider-top--about {
   margin-bottom: 3rem;
+  height: 200px;
 }
 .pantalla-about-us .flexslider-top--about .flex-control-nav {
   bottom: 70%;
@@ -411,11 +426,11 @@ body {
   align-items: center;
   margin-bottom: 1.5rem;
 }
+.pantalla-about-us .redes-sociales :last-child {
+  margin-right: 0 !important;
+}
 .pantalla-about-us .redes-sociales .icono {
   margin-right: 1rem;
-}
-.pantalla-about-us .redes-sociales .icono--last {
-  margin-right: 0;
 }
 .pantalla-about-us .redes-sociales svg {
   width: 25px;
@@ -604,9 +619,7 @@ body {
   align-items: center;
   margin-right: 1rem;
 }
-.pantalla-platillo-individual .descripcion-breve-platillo .datos svg {
-  width: 15px;
-  height: 15px;
+.pantalla-platillo-individual .descripcion-breve-platillo .datos img {
   margin-right: 5px;
 }
 .pantalla-platillo-individual .descripcion-breve-platillo .datos span {
@@ -641,6 +654,7 @@ body {
 }
 .pantalla-platillo-individual .sugerencias .encabezado {
   display: flex;
+  align-items: center;
   font-size: 0.8rem;
   color: #383838;
   font-weight: bold;
@@ -755,16 +769,11 @@ body {
   width: 50%;
   overflow: hidden;
   position: relative;
-  background-color: red;
-}
-.carta-menu .plato .imagen img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background-position: 50%;
+  background-color: var(--color-fondo);
+  background-image: var(--src);
+  background-size: cover;
+  background-position: 50% 50%;
+  aspect-ratio: 16/9;
 }
 .carta-menu .plato .descripcion {
   width: 50%;
@@ -813,7 +822,7 @@ body {
   align-items: center;
   margin-bottom: 8px;
 }
-.carta-menu .plato .tiempo svg {
+.carta-menu .plato .tiempo img {
   width: 12px;
   height: 12px;
   margin-right: 3px;
@@ -837,25 +846,6 @@ body {
   border: 1px solid #e3dbdb;
 }
 
-.cerrar-ventana {
-  z-index: 5;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  width: 25px;
-  height: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  font-weight: bolder;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-.cerrar-ventana span {
-  position: relative;
-}
-
 .bold {
   font-weight: bold;
 }
@@ -864,12 +854,13 @@ body {
   font-size: 1.2rem;
   font-family: "Nunito Sans", sans-serif;
   font-weight: 600;
+  color: #000000;
 }
 
 .contenedor-regresar {
   width: 90%;
   margin: 0 auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: flex;
   font-size: 0.9rem;
   font-weight: bold;
@@ -883,19 +874,20 @@ body {
 .flexslider-top {
   position: relative !important;
   margin-bottom: 3rem;
+  height: 30%;
 }
 .flexslider-top .slide {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
   overflow: hidden;
+  border-radius: 0px !important;
 }
 .flexslider-top .slide img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
   object-fit: cover;
 }
 .flexslider-top .flex-control-nav {
-  top: 106%;
+  top: 110%;
 }
 .flexslider-top .flex-control-nav a {
   background-color: black;
@@ -928,11 +920,12 @@ body {
   border: 1px solid black;
 }
 .pantalla-card--derecha {
-  top: 0;
-  left: 5vw;
+  top: 4dvh;
+  left: 8dvw;
+  width: 92dvw;
   transform: translateY(0%) translateX(30%);
   transition: all 0.3s ease-out;
-  height: 100dvh;
+  height: 96dvh;
   border: 1px solid black;
 }
 .pantalla-card--active {
@@ -1000,8 +993,31 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   transition: all 0.1s ease-out;
+}
+.overlay--derecha .cerrar-ventana {
+  top: 10px !important;
+  left: 10px !important;
+}
+.overlay .cerrar-ventana {
+  z-index: 5;
+  position: absolute;
+  top: 10%;
+  right: calc(50% - 25px);
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-weight: bolder;
+  background-color: rgb(255, 255, 255);
+}
+.overlay .cerrar-ventana span {
+  position: relative;
+  font-weight: bold;
 }
 .overlay--active {
   z-index: 2;

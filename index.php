@@ -22,14 +22,16 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 	<div class="page-wrapper">
 
 		<div class="overlay">
-
+			<div class="cerrar-ventana">
+				<span>&times;</span>
+			</div>
 		</div>
 
 		<div class="pantalla-principal">
 				<div class="logo">
 				<?php
 					// Obtener el logo desde el campo personalizado de ACF
-					$logo = get_field('logo', 19);  // Reemplaza 'logo_field_name' con el nombre del campo ACF para el logo
+					$logo = get_field('logo', 'options');  // Reemplaza 'logo_field_name' con el nombre del campo ACF para el logo
 
 					if ($logo) {
 						// Obtener la URL del logo
@@ -63,28 +65,30 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 					<div class="titulo-menu">
 						<span>Nuestro Menú</span>
 					</div>
-					<div class="categorias">
-						<div class="categoria categoria--selected" data-categoria="recomendado">
-							<span>Recomendado</span>
+					<div class="contenedor-categoria">
+						<div class="difuminado">
 						</div>
-						<div class="categoria" data-categoria="hamburguesas">
-							<span>Hamburguesas</span>
-						</div>
-						<div class="categoria">
-							<span>Burritos</span>
-						</div>
-						<div class="categoria" data-categoria="pasta">
-							<span>Pasta</span>
-						</div>
-						<div class="categoria">
-							<span>Sandwich</span>
+						<div class="categorias">
+							<div class="categoria categoria--selected" data-categoria="recomendado">
+								<span>Recomendado</span>
+							</div>
+							<div class="categoria" data-categoria="hamburguesas">
+								<span>Hamburguesas</span>
+							</div>
+							<div class="categoria">
+								<span>Burritos</span>
+							</div>
+							<div class="categoria" data-categoria="pasta">
+								<span>Pasta</span>
+							</div>
+							<div class="categoria">
+								<span>Sandwich</span>
+							</div>
 						</div>
 					</div>
 					<div class="carta-menu">
 						<div class="plato js-plato-menu js-abrir-plato plato--active" data-cat="recomendado" data-titulo="Corte New York" data-precio="250" data-tiempo="25" data-calorias="450" data-gramos="300" data-descripcion="Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa" data-ingredientes="Carne de res, papas, lechuga, jitomate, cebolla, aderezo de la casa" data-imagenes="platillo1.webp,platillo2.webp">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">
-							</div>
+							<div class="imagen" style="--src: url('<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/images/platillo1.webp');"></div>
 							<div class="descripcion">
 								<div class="superior">
 									<div class="nombre-platillo">
@@ -95,7 +99,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-									<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+									<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>25 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -122,7 +126,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>30 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -144,7 +148,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>22 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -166,7 +170,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>30 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -188,7 +192,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>30 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -210,7 +214,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>22 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -232,7 +236,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>30 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -254,7 +258,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>30 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -270,78 +274,72 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 		</div>
 
 		<div class="pantalla-about-us pantalla-card">
-			<div class="cerrar-ventana">
-				<span>&times;</span>
-			</div>
 			<div class="flexslider-top--about">
 					<div class="slides">
 						<?php
 							// Obtener el grupo de campos 'imagenes_carousel' de la página con el ID 15
-							$imagenes_carousel = get_field('imagenes-carousel', 19);
+							$imagenes_carousel = get_field('imagenes-carousel', 'option');
 							// Si 'imagenes_carousel' no está vacío, imprimir los valores
 							if ($imagenes_carousel) {
-								echo '<ul class="slides">';
 								foreach ($imagenes_carousel as $imagen) {
 									if ($imagen['url'] != '') {
 										echo '<li class="slide"><img src="' . esc_url($imagen['url']) . '" alt="' . esc_attr($imagen['alt']) . '"></li>';
 									}
 								}
-								echo '</ul>';
 							} else {
 								echo 'No hay imágenes disponibles.';
 							}
 						?>
 					</div>
 			</div>
-			<div class="redes-sociales">
-				<div class="icono">
-					<svg fill="#797979" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-143 145 512 512" xml:space="preserve" stroke="#797979"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M169.5,357.6l-2.9,38.3h-39.3 v133H77.7v-133H51.2v-38.3h26.5v-25.7c0-11.3,0.3-28.8,8.5-39.7c8.7-11.5,20.6-19.3,41.1-19.3c33.4,0,47.4,4.8,47.4,4.8l-6.6,39.2 c0,0-11-3.2-21.3-3.2c-10.3,0-19.5,3.7-19.5,14v29.9H169.5z"></path> </g></svg>
+		    	<div class="redes-sociales">
+					<?php while( have_rows('redes-sociales', 'option') ): the_row(); 
+						$red = get_sub_field('red');
+						$link = get_sub_field('link');
+						?>
+						<div class="icono">
+							<?php if( $red == 0 ): // Facebook ?>
+								<a href="<?php echo esc_url($link); ?>" target="_blank" rel="noopener noreferrer">
+									<svg fill="#797979" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-143 145 512 512" xml:space="preserve" stroke="#797979"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M169.5,357.6l-2.9,38.3h-39.3 v133H77.7v-133H51.2v-38.3h26.5v-25.7c0-11.3,0.3-28.8,8.5-39.7c8.7-11.5,20.6-19.3,41.1-19.3c33.4,0,47.4,4.8,47.4,4.8l-6.6,39.2 c0,0-11-3.2-21.3-3.2c-10.3,0-19.5,3.7-19.5,14v29.9H169.5z"></path> </g></svg>
+								</a>
+							<?php elseif( $red == 1 ): // LinkedIn ?>
+								<a href="<?php echo esc_url($link); ?>" target="_blank" rel="noopener noreferrer">
+									<svg class="small" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#797979" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.72 3.99997H5.37C5.19793 3.99191 5.02595 4.01786 4.86392 4.07635C4.70189 4.13484 4.55299 4.22471 4.42573 4.34081C4.29848 4.45692 4.19537 4.59699 4.12232 4.75299C4.04927 4.909 4.0077 5.07788 4 5.24997V18.63C4.01008 18.9901 4.15766 19.3328 4.41243 19.5875C4.6672 19.8423 5.00984 19.9899 5.37 20H18.72C19.0701 19.9844 19.4002 19.8322 19.6395 19.5761C19.8788 19.32 20.0082 18.9804 20 18.63V5.24997C20.0029 5.08247 19.9715 4.91616 19.9078 4.76122C19.8441 4.60629 19.7494 4.466 19.6295 4.34895C19.5097 4.23191 19.3672 4.14059 19.2108 4.08058C19.0544 4.02057 18.8874 3.99314 18.72 3.99997ZM9 17.34H6.67V10.21H9V17.34ZM7.89 9.12997C7.72741 9.13564 7.5654 9.10762 7.41416 9.04768C7.26291 8.98774 7.12569 8.89717 7.01113 8.78166C6.89656 8.66615 6.80711 8.5282 6.74841 8.37647C6.6897 8.22474 6.66301 8.06251 6.67 7.89997C6.66281 7.73567 6.69004 7.57169 6.74995 7.41854C6.80986 7.26538 6.90112 7.12644 7.01787 7.01063C7.13463 6.89481 7.2743 6.80468 7.42793 6.74602C7.58157 6.68735 7.74577 6.66145 7.91 6.66997C8.07259 6.66431 8.2346 6.69232 8.38584 6.75226C8.53709 6.8122 8.67431 6.90277 8.78887 7.01828C8.90344 7.13379 8.99289 7.27174 9.05159 7.42347C9.1103 7.5752 9.13699 7.73743 9.13 7.89997C9.13719 8.06427 9.10996 8.22825 9.05005 8.3814C8.99014 8.53456 8.89888 8.6735 8.78213 8.78931C8.66537 8.90513 8.5257 8.99526 8.37207 9.05392C8.21843 9.11259 8.05423 9.13849 7.89 9.12997ZM17.34 17.34H15V13.44C15 12.51 14.67 11.87 13.84 11.87C13.5822 11.8722 13.3313 11.9541 13.1219 12.1045C12.9124 12.2549 12.7546 12.4664 12.67 12.71C12.605 12.8926 12.5778 13.0865 12.59 13.28V17.34H10.29V10.21H12.59V11.21C12.7945 10.8343 13.0988 10.5225 13.4694 10.3089C13.84 10.0954 14.2624 9.98848 14.69 9.99997C16.2 9.99997 17.34 11 17.34 13.13V17.34Z" fill="#797979"></path> </g></svg>
+								</a>
+							<?php elseif( $red == 2 ): // YouTube ?>
+								<a href="<?php echo esc_url($link); ?>" target="_blank" rel="noopener noreferrer">
+									<svg class="small" fill="#797979" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" stroke="#797979"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M24.325 8.309s-2.655-.334-8.357-.334c-5.517 0-8.294.334-8.294.334A2.675 2.675 0 0 0 5 10.984v10.034a2.675 2.675 0 0 0 2.674 2.676s2.582.332 8.294.332c5.709 0 8.357-.332 8.357-.332A2.673 2.673 0 0 0 27 21.018V10.982a2.673 2.673 0 0 0-2.675-2.673zM13.061 19.975V12.03L20.195 16l-7.134 3.975z"></path></g></svg>
+								</a>
+							<?php elseif( $red == 3 ): // Instagram ?>
+								<a href="<?php echo esc_url($link); ?>" target="_blank" rel="noopener noreferrer">
+									<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#797979"></path> <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="#797979"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z" fill="#797979"></path> </g></svg>
+								</a>
+							<?php endif; ?>
+						</div>
+					<?php endwhile; ?>
 				</div>
-				<div class="icono ">
-					<svg class="small" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#797979" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.72 3.99997H5.37C5.19793 3.99191 5.02595 4.01786 4.86392 4.07635C4.70189 4.13484 4.55299 4.22471 4.42573 4.34081C4.29848 4.45692 4.19537 4.59699 4.12232 4.75299C4.04927 4.909 4.0077 5.07788 4 5.24997V18.63C4.01008 18.9901 4.15766 19.3328 4.41243 19.5875C4.6672 19.8423 5.00984 19.9899 5.37 20H18.72C19.0701 19.9844 19.4002 19.8322 19.6395 19.5761C19.8788 19.32 20.0082 18.9804 20 18.63V5.24997C20.0029 5.08247 19.9715 4.91616 19.9078 4.76122C19.8441 4.60629 19.7494 4.466 19.6295 4.34895C19.5097 4.23191 19.3672 4.14059 19.2108 4.08058C19.0544 4.02057 18.8874 3.99314 18.72 3.99997ZM9 17.34H6.67V10.21H9V17.34ZM7.89 9.12997C7.72741 9.13564 7.5654 9.10762 7.41416 9.04768C7.26291 8.98774 7.12569 8.89717 7.01113 8.78166C6.89656 8.66615 6.80711 8.5282 6.74841 8.37647C6.6897 8.22474 6.66301 8.06251 6.67 7.89997C6.66281 7.73567 6.69004 7.57169 6.74995 7.41854C6.80986 7.26538 6.90112 7.12644 7.01787 7.01063C7.13463 6.89481 7.2743 6.80468 7.42793 6.74602C7.58157 6.68735 7.74577 6.66145 7.91 6.66997C8.07259 6.66431 8.2346 6.69232 8.38584 6.75226C8.53709 6.8122 8.67431 6.90277 8.78887 7.01828C8.90344 7.13379 8.99289 7.27174 9.05159 7.42347C9.1103 7.5752 9.13699 7.73743 9.13 7.89997C9.13719 8.06427 9.10996 8.22825 9.05005 8.3814C8.99014 8.53456 8.89888 8.6735 8.78213 8.78931C8.66537 8.90513 8.5257 8.99526 8.37207 9.05392C8.21843 9.11259 8.05423 9.13849 7.89 9.12997ZM17.34 17.34H15V13.44C15 12.51 14.67 11.87 13.84 11.87C13.5822 11.8722 13.3313 11.9541 13.1219 12.1045C12.9124 12.2549 12.7546 12.4664 12.67 12.71C12.605 12.8926 12.5778 13.0865 12.59 13.28V17.34H10.29V10.21H12.59V11.21C12.7945 10.8343 13.0988 10.5225 13.4694 10.3089C13.84 10.0954 14.2624 9.98848 14.69 9.99997C16.2 9.99997 17.34 11 17.34 13.13V17.34Z" fill="#797979"></path> </g></svg>
-				</div>
-				<div class="icono ">
-					<svg class="small" fill="#797979" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" stroke="#797979"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M24.325 8.309s-2.655-.334-8.357-.334c-5.517 0-8.294.334-8.294.334A2.675 2.675 0 0 0 5 10.984v10.034a2.675 2.675 0 0 0 2.674 2.676s2.582.332 8.294.332c5.709 0 8.357-.332 8.357-.332A2.673 2.673 0 0 0 27 21.018V10.982a2.673 2.673 0 0 0-2.675-2.673zM13.061 19.975V12.03L20.195 16l-7.134 3.975z"></path></g></svg>
-				</div>
-				<div class="icono icono--last">
-					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#797979"></path> <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="#797979"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z" fill="#797979"></path> </g></svg>
-				</div>
-			</div>
-
 			<div class="contenedor-about">
 				<div class="titulo">
 					<b>Acerca de nosotros</b>
 				</div>
 				<div class="parrafo">
 					<?php
-						$texto_about = the_field('texto-about', 19);
+						$texto_about = get_field('descripcion', 'option');
 					?>
-					<p><?php echo esc_html($texto_about); ?></p>
-				</div>
-				<div class="imagen-final">
-				<?php
-					// Obtener el campo 'imagen_final' de la página con el ID 15
-					$imagen_final = get_field('imagen-final', 19);
-
-					// Si 'imagen_final' no está vacío, imprimir la imagen
-					if ($imagen_final) {
-						echo '<img src="' . esc_url($imagen_final['url']) . '" alt="' . esc_attr($imagen_final['alt']) . '">';
-					} else {
-						echo 'No hay imagen disponible.';
-					}
-				?>
+					<p><?php echo wp_kses_post($texto_about); ?></p>
 				</div>
 			</div>
+
+			<div class="contenedor-regresar">
+				<span><span class="back"><</span> Regresar al menú</span>		
+			</div>
+
 
 		</div>
 
 		<div class="pantalla-promos pantalla-card">
 
 			<div class="contenedor-pantalla">
-				<div class="cerrar-ventana">
-					<span>&times;</span>
-				</div>
-
 				<div class="titulo">
 					<span>Promos y descuentos</span>
 				</div>
@@ -370,7 +368,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-									<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+																<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>25 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -397,7 +395,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>30 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -419,7 +417,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>30 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -441,7 +439,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									</div>
 								</div>
 								<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 									<span>30 min aprox</span>
 								</div>
 								<div class="resumen">
@@ -451,14 +449,13 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 						</div>
 				</div>
 
+				<div class="contenedor-regresar">
+					<span><span class="back"><</span> Regresar al menú</span>					
+				</div>
 			</div>
 		</div>
 
 		<div class="pantalla-promo-individual pantalla-card">
-				<div class="cerrar-ventana">
-					<span>&times;</span>
-				</div>
-
 				<div class="contenedor-imagen-top" id="imagen-promo-individual">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo1.webp" alt="">
 				</div>
@@ -479,14 +476,9 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 					<span><span class="back"><</span> Regresar al menú</span>
 					
 				</div>
-
 		</div>
 
 		<div class="pantalla-platillo-individual pantalla-card pantalla-card--derecha">
-				<div class="cerrar-ventana">
-					<span>&times;</span>
-				</div>
-
 				<div class="flexslider-top">
 					<ul class="slides" id="imagenes-platillo-individual">
 						<li class="slide">
@@ -512,15 +504,15 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 					</div>
 					<div class="datos">
 						<div class="tiempo" id="tiempo-platillo-individual">
-							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 							<span>25 min aprox</span>
 						</div>
 						<div class="calorias" id="calorias-platillo-individual">
-							<svg style="width: 20px; height: 20px; margin-bottom: 6px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.5 10.0003C14.5 9.20875 15.5528 8.99895 15.8321 9.73957C16.5077 11.5311 17 13.1337 17 14.0002C17 16.7616 14.7614 19.0002 12 19.0002C9.23858 19.0002 7 16.7616 7 14.0002C7 13.0693 7.56822 11.2887 8.32156 9.33698C9.29743 6.80879 9.78536 5.54469 10.3877 5.4766C10.5804 5.45482 10.7907 5.49399 10.9626 5.58371C11.5 5.86413 11.5 7.24285 11.5 10.0003C11.5 10.8287 12.1716 11.5003 13 11.5003C13.8284 11.5003 14.5 10.8287 14.5 10.0003Z" stroke="#797979"></path> <path d="M11 19L10.7372 18.343C10.2816 17.204 10.4737 15.9079 11.24 14.95V14.95C11.6296 14.463 12.3704 14.463 12.76 14.95V14.95C13.5263 15.9079 13.7184 17.204 13.2628 18.343L13 19" stroke="#797979"></path> </g></svg>
+							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/llama.svg" alt="Descripción del SVG">
 							<span>450 cal</span>
 						</div>
 						<div class="gramos" id="gramos-platillo-individual">
-							<svg style="width: 10px; height: 10px; margin-bottom: 6px" fill="#797979" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 92 92" enable-background="new 0 0 92 92" xml:space="preserve" stroke="#797979"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="XMLID_2112_" d="M81.2,31.1c-0.4-4-3.8-7.1-7.9-7.1H66v-1.8C66,10.5,57.4,1,46.2,1h-0.4C34.6,1,26,10.5,26,22.2V24h-7.3 c-4.1,0-7.4,3.1-7.9,7.1L5,86.5c-0.1,1.1,0.2,2.3,1,3.1C6.8,90.5,7.9,91,9,91h74c1.1,0,2.2-0.5,3-1.3c0.8-0.8,1.1-2,1-3.1L81.2,31.1 z M34,22.2C34,14.9,39.1,9,45.8,9h0.4C52.9,9,58,14.9,58,22.2V24H34V22.2z M13.4,83l5.3-51h54.4l5.3,51H13.4z"></path> </g></svg>
+							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/peso.svg" alt="Descripción del SVG">
 							<span>300 gr</span>
 						</div>
 					</div>
@@ -564,7 +556,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 								</div>
 							</div>
 							<div class="tiempo">
-								<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 								<span>25 min aprox</span>
 							</div>
 							<div class="resumen">
@@ -591,7 +583,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 								</div>
 							</div>
 							<div class="tiempo">
-							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#797979" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+														<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
 								<span>30 min aprox</span>
 							</div>
 							<div class="resumen">
@@ -601,12 +593,12 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 					</div>
 					</div>
 				</div>
+				<div class="contenedor-regresar">
+					<span><span class="back"><</span> Regresar al menú</span>					
+				</div>
 		</div>
 
 		<div class="pantalla-preguntas-frecuentes pantalla-card">
-			<div class="cerrar-ventana">
-				<span>&times;</span>
-			</div>
 			<div class="titulo-principal">
 				<span>Preguntas Frecuentes</span>
 			</div>
@@ -615,7 +607,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 				// Suponiendo que tienes acceso a los datos de ACF y estás en un entorno donde puedes utilizar PHP
 
 				// Obtener el campo de preguntas frecuentes (FAQ) de la página con ID 19
-				$faq = get_field('faq', 19);
+				$faq = get_field('faq', 'options');
 
 				// Verificar si hay preguntas frecuentes disponibles
 				if ($faq) {

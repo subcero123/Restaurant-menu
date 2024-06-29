@@ -198,6 +198,7 @@ function mostrarPlato() {
   document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
   // Agregar a overlay la clase overlay--active
   document.getElementsByClassName("overlay")[0].classList.add("overlay--active");
+  document.getElementsByClassName("overlay")[0].classList.add("overlay--derecha");
 }
 
 function mostrarPromo() {
@@ -277,6 +278,7 @@ function cerrarVentanas() {
   pantalla_principal[0].classList.remove("pantalla-card--active");
   body[0].classList.remove("quitar-overflow");
   document.getElementsByClassName("overlay")[0].classList.remove("overlay--active");
+  document.getElementsByClassName("overlay")[0].classList.remove("overlay--derecha");
 
 
 
