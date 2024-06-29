@@ -48,15 +48,37 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 			<div class="contenedor-slider">
 					<div class="flexslider">
 						<div class="slides">
-							<li class="slide promo js-abrir-promo" data-imagen="promo1.webp" data-texto="Aprovecha esta promocion y disfruta de un 10% de descuento en tu cuenta total al presentar este cupón. Valido unicamente en sucursales participantes, no aplica con otras promociones.">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo1.webp" alt="">
-							</li>
-							<li class="slide promo js-abrir-promo" data-imagen="promo2.webp" data-texto="Menus de hamburguesas al 2 x 1, por cada hamburguesa consumida se regalará una bebida.">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo2.webp" alt="">
-							</li>
-							<li class="slide promo">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo1.webp" alt="">
-							</li>
+						<?php
+							// Inicia el loop personalizado para el post type 'promocion'
+							$args = array(
+								'post_type' => 'promocion',
+								'posts_per_page' => -1, // Cambiar este valor si necesitas un número específico de posts
+							);
+
+							// Inicia WP_Query
+							$the_query = new WP_Query($args);
+
+							// Comprueba si hay platillos encontrados
+							if ($the_query->have_posts()) :
+								// Itera sobre cada platillo encontrado
+								while ($the_query->have_posts()) :
+									$the_query->the_post();
+									// Obtener los campos personalizados de ACF
+									$imagen_promocion = get_field('imagen_promocion');
+									$imagen_promocion = $imagen_promocion['url'];
+									$descripcion_promocion = get_field('descripcion_promocion');
+									?>
+									<li class="slide promo js-abrir-promo" data-imagen="<?php echo esc_url($imagen_promocion); ?>" data-texto="<?php echo esc_attr($descripcion_promocion); ?>">
+										<img src="<?php echo esc_url($imagen_promocion); ?>" alt="">
+									</li>
+									<?php
+								endwhile;
+								wp_reset_postdata();
+							else :
+								echo '<p>No se encontraron promociones.</p>';
+							endif;
+							?>
+
 						</div>
 					</div>
 			</div>
@@ -106,6 +128,9 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 								// Obtener el titulo del post
 								$titulo = get_the_title();
 								$categoria = get_the_category();
+								// Concatenar las categorías en un string separado por comas
+								$categoria = implode(', ', wp_list_pluck($categoria, 'name'));
+
 								$tiempo = get_field('tiempo_preparacion');
 								$calorias = get_field('numero_calorias');
 								$gramos = get_field('gramos');
@@ -145,7 +170,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 
 						<!-- Estructura HTML para cada platillo -->
 						<div class="plato js-abrir-plato js-plato-menu js-pantalla-contenida"
-							data-cat="<?php echo esc_attr($categoria[0]->slug); ?>"
+							data-cat="<?php echo esc_attr($categoria); ?>"
 							data-titulo="<?php echo esc_attr($titulo); ?>"
 							data-precio="<?php echo esc_attr($precioUnitario); ?>"
 							data-tiempo="<?php echo esc_attr($tiempo); ?>"
@@ -269,108 +294,151 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 				</div>
 
 				<div class="contenedor-promos">
-					<div class="promo js-abrir-promo js-pantalla-contenida" data-imagen="promo1.webp" data-texto="Aprovecha esta promocion y disfruta de un 10% de descuento en tu cuenta total al presentar este cupón. Valido unicamente en sucursales participantes, no aplica con otras promociones." >
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo1.webp" alt="">
-					</div>
-					<div class="promo js-abrir-promo js-pantalla-contenida" data-imagen="promo2.webp" data-texto="Menus de hamburguesas al 2 x 1, por cada hamburguesa consumida se regalará una bebida.">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/promo2.webp" alt="">
-					</div>
+				<?php
+							// Inicia el loop personalizado para el post type 'promocion'
+							$args = array(
+								'post_type' => 'promocion',
+								'posts_per_page' => -1, // Cambiar este valor si necesitas un número específico de posts
+							);
+
+							// Inicia WP_Query
+							$the_query = new WP_Query($args);
+
+							// Comprueba si hay platillos encontrados
+							if ($the_query->have_posts()) :
+								// Itera sobre cada platillo encontrado
+								while ($the_query->have_posts()) :
+									$the_query->the_post();
+									// Obtener los campos personalizados de ACF
+									$imagen_promocion = get_field('imagen_promocion');
+									$imagen_promocion = $imagen_promocion['url'];
+									$descripcion_promocion = get_field('descripcion_promocion');
+									?>
+									<div class="promo js-abrir-promo js-pantalla-contenida" data-imagen="<?php echo esc_url($imagen_promocion); ?>" data-texto="<?php echo esc_attr($descripcion_promocion); ?>">
+										<img src="<?php echo esc_url($imagen_promocion); ?>" alt="">
+									</div>
+									<?php
+								endwhile;
+								wp_reset_postdata();
+							else :
+								echo '<p>No se encontraron promociones.</p>';
+							endif;
+							?>
 				</div>
 
 				<div class="carta-menu">
-						<div class="plato js-abrir-plato js-pantalla-contenida" data-cat="recomendado" data-titulo="Corte New York" data-precio="250" data-tiempo="25" data-calorias="450" data-gramos="300" data-descripcion="Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa" data-ingredientes="Carne de res, papas, lechuga, jitomate, cebolla, aderezo de la casa" data-imagenes="platillo1.webp,platillo2.webp">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">
-							</div>
+				<?php
+						// Define los argumentos para WP_Query
+						$args = array(
+							'post_type' => 'platillo',
+							'posts_per_page' => -1,
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'category', // Asegúrate de que la taxonomía sea correcta, en este caso es 'category'
+									'field' => 'slug',
+									'terms' => 'Promocion', // El slug de la categoría que deseas filtrar
+								),
+							),
+						);
+
+						// Inicia WP_Query
+						$the_query = new WP_Query($args);
+
+						// Comprueba si hay platillos encontrados
+						if ($the_query->have_posts()) :
+							// Itera sobre cada platillo encontrado
+							while ($the_query->have_posts()) :
+								$the_query->the_post();
+
+								// Obtener el titulo del post
+								$titulo = get_the_title();
+								$categoria = get_the_category();
+								// Concatenar las categorías en un string separado por comas
+								$categoria = implode(',', wp_list_pluck($categoria, 'name'));
+								$tiempo = get_field('tiempo_preparacion');
+								$calorias = get_field('numero_calorias');
+								$gramos = get_field('gramos');
+								$descripcion = get_field('descripcion');
+								// remover los tags html
+								$descripcion = strip_tags($descripcion);
+								$descripcionSmall = substr($descripcion, 0, 50) . '...';
+								$ingredientes = get_field('ingredientes');
+								// remover los tags html
+								$ingredientes = strip_tags($ingredientes);
+								$imagenes = get_field('carrusel'); // Repeater de imágenes
+								// El precio es un group
+								$precio = get_field('precio');
+								$precioUnitario = $precio['precio-unitario'];
+								$precioDescuento = $precio['precio-descuento'];
+								$descuento = $precio['descuento_bol'];
+								$recomendado = get_field('recomendaciones');
+
+
+								$recomendados = array();
+								// Comprobar si hay imágenes en el repeater
+								if ($imagenes) {
+									
+									$imagenes_array = array();
+									foreach ($imagenes as $imagen) {
+										// Obtener la URL de cada imagen en el repeater
+										$imagenes_array[] = $imagen['imagen']['url'];
+									}
+									// Convertir el array de URLs en una cadena separada por comas para data-imagenes
+									$data_imagenes = implode(',', $imagenes_array);
+								} else {
+									$data_imagenes = ''; // En caso de que no haya imágenes
+								}
+								
+								
+						?>
+
+						<!-- Estructura HTML para cada platillo -->
+						<div class="plato js-abrir-plato js-pantalla-contenida"
+							data-cat="<?php echo esc_attr($categoria); ?>"
+							data-titulo="<?php echo esc_attr($titulo); ?>"
+							data-precio="<?php echo esc_attr($precioUnitario); ?>"
+							data-tiempo="<?php echo esc_attr($tiempo); ?>"
+							data-calorias="<?php echo esc_attr($calorias); ?>"
+							data-gramos="<?php echo esc_attr($gramos); ?>"
+							data-descripcion="<?php echo esc_attr($descripcion); ?>"
+							data-ingredientes="<?php echo esc_attr($ingredientes); ?>"
+							data-imagenes="<?php echo esc_attr($data_imagenes); ?>"
+							data-recomendado="<?php echo esc_attr($recomendados); ?>">
+							<div class="imagen" style="background-image: url('<?php echo esc_url($imagenes_array[0]); ?>');"></div>
 							<div class="descripcion">
 								<div class="superior">
 									<div class="nombre-platillo">
-										<span>Corte New York</span>
-									</div>
-									<div class="precio">
-										$250
-									</div>
-								</div>
-								<div class="tiempo">
-																<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>25 min aprox</span>
-								</div>
-								<div class="resumen">
-									<span>Corte de lomo angosto americano al grill de ...</span>
-								</div>
-							</div>
-						</div>
-						<div class="plato js-abrir-plato js-pantalla-contenida" data-cat="recomendado" data-titulo="Fajitas & Chilly" data-precio="299" data-tiempo="30" data-calorias="350" data-gramos="350" data-descripcion="Tiras de carne asada con pimientos y cebollas, servidas con tortillas." data-ingredientes="Fajitas cocinadas al gusto, acompañado de Chilly" data-imagenes="platillo2.webp,platillo1.webp">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo2.webp" alt="">
-							</div>
-							<div class="descripcion">
-								<div class="superior">
-									<div class="nombre-platillo">
-										<span>Fajitas & Chilly</span>
+										<span><?php echo esc_html($titulo); ?></span>
 									</div>
 									<div class="precio">
 										<div class="normal">
-											$299
+											<?php echo '$' . number_format($precioUnitario, 2); ?> <!-- Formato de precio -->
 										</div>
-										<div class="descuento">
-											<span class="mini">ANTES</span> <span class="tachado">$350</span>
-										</div>
+										<?php if ($descuento) : ?>
+											<div class="descuento">
+												<span class="mini">ANTES</span> <span class="tachado"><?php echo '$' . number_format($precioDescuento, 2); ?></span>
+											</div>
+										<?php endif; ?>
 									</div>
 								</div>
 								<div class="tiempo">
-															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>30 min aprox</span>
+									<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
+									<span><?php echo esc_html($tiempo); ?> min aprox</span>
 								</div>
 								<div class="resumen">
-									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
+									<span><?php echo esc_html($descripcionSmall); ?></span>
 								</div>
 							</div>
 						</div>
-						<div class="plato js-pantalla-contenida" data-cat="pasta" data-titulo="Bowl Especial Picante" data-precio="250">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
-							</div>
-							<div class="descripcion">
-								<div class="superior">
-									<div class="nombre-platillo">
-										<span>Bowl Especial Picante</span>
-									</div>
-									<div class="precio">
-										$250
-									</div>
-								</div>
-								<div class="tiempo">
-															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>30 min aprox</span>
-								</div>
-								<div class="resumen">
-									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-								</div>
-							</div>
-						</div>
-						<div class="plato js-pantalla-contenida" data-cat="hamburguesas" data-titulo="Bowl Especial Picante" data-precio="250">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
-							</div>
-							<div class="descripcion">
-								<div class="superior">
-									<div class="nombre-platillo">
-										<span>Hamburguesa a la carta</span>
-									</div>
-									<div class="precio">
-										$250
-									</div>
-								</div>
-								<div class="tiempo">
-															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>30 min aprox</span>
-								</div>
-								<div class="resumen">
-									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-								</div>
-							</div>
-						</div>
+
+						<?php
+							endwhile;
+							wp_reset_postdata(); // Restablece los datos del post
+						else :
+							// No se encontraron platillos
+							echo 'No hay platillos disponibles.';
+						endif;
+					?>
 				</div>
 
 				<div class="contenedor-regresar">
@@ -385,14 +453,8 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 				</div>
 
 				<div class="contenedor-terminos">
-					<div class="titulo">
-						<span>Términos y condiciones</span>
-					</div>
 					<div class="parrafo" id="texto-promo-individual">
 						<p>Aprovecha esta promocion y disfruta de un 10% de descuento en tu cuenta total al presentar este cupón</p>
-					</div>
-					<div class="parrafo">
-						<b class="bold">Importante: </b>  <span>esta promocion solo aplica para pago en efectivo</span>
 					</div>
 				</div>
 

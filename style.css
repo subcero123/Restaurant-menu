@@ -485,6 +485,9 @@ body {
   font-weight: 600;
   text-align: center;
 }
+.pantalla-promos .carta-menu {
+  min-height: 0px;
+}
 .pantalla-promos .plato {
   display: flex !important;
 }

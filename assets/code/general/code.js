@@ -1,14 +1,17 @@
 jQuery(function ($) {
-  //beginning
 
-  // Can also be used with $(document).ready()
-  $(window).load(function () {
+  $(document).ready(function () {
     $(".flexslider").flexslider({
       animation: "slide",
       directionNav: false, // Oculta los botones de dirección (previo y siguiente)
       itemMargin: 5,
       itemWidth: 350,
     });
+  });
+
+
+  // Can also be used with $(document).ready()
+  $(window).load(function () {
 
     // $('.flexslider-top').flexslider({
     // 	animation: "slide",
@@ -103,13 +106,10 @@ jQuery(function ($) {
       var textoPromo = $(this).data("texto");
       var imagen = $(this).data("imagen");
 
-      // Obtener la ruta actual
-      var ruta = window.location.href;
-
-      $("#texto-promo-individual").find("p").html(textoPromo);
+      $("#texto-promo-individual").html(textoPromo);
       $("#imagen-promo-individual")
         .find("img")
-        .attr("src", ruta + "wp-content/themes/RestP/assets/images/" + imagen);
+        .attr("src",imagen);
     });
 
     $("#about-us").click(function () {
@@ -228,17 +228,24 @@ for (i = 0; i < categorias.length; i++) {
 
     // Obtener el data de la categoria seleccionada
     var categoria = this.dataset.categoria;
+    
 
     // Iteramos sobre los hijos de .platos
     var platos = document.getElementsByClassName("js-plato-menu");
 
+
     for (i = 0; i < platos.length; i++) {
       platos[i].classList.remove("plato--active");
+      var categoriasPlato = platos[i].dataset.cat;
+      // minusculas
+      categoriasPlato = categoriasPlato.toLowerCase();
+      // Quitar espacios
+      categoriasPlato = categoriasPlato.replace(/\s/g, "");
+      categoriasPlato = categoriasPlato.split(",");
 
-      // Si la categoria del plato es igual a la categoria seleccionada
-      if (platos[i].dataset.cat == categoria) {
-        // Mostrar el plato
-        platos[i].classList.toggle("plato--active");
+      // Si alguna categoria del plato es igual a la categoria seleccionada
+      if (categoriasPlato.includes(categoria)) {
+        platos[i].classList.add("plato--active");
       }
     }
   });
@@ -295,7 +302,14 @@ function  cargarPlatos() {
   var platos = document.getElementsByClassName("js-plato-menu");
   
   for(i = 0; i < platos.length; i++) {
-    if(platos[i].dataset.cat == "recomendado") {
+    var categoriasPlato = platos[i].dataset.cat;
+      // minusculas
+      categoriasPlato = categoriasPlato.toLowerCase();
+      // Quitar espacios
+      categoriasPlato = categoriasPlato.replace(/\s/g, "");
+      categoriasPlato = categoriasPlato.split(",");
+      console.log(categoriasPlato);
+    if(categoriasPlato.includes("recomendado")) {
       platos[i].classList.add("plato--active");
     }
   }
