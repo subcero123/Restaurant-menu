@@ -800,7 +800,7 @@ body {
 .carta-menu .plato .descripcion .superior .precio .descuento {
   position: absolute;
   top: 105%;
-  left: -40%;
+  left: -10%;
   color: #797979;
   display: flex;
   font-weight: normal;

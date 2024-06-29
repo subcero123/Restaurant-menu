@@ -122,7 +122,10 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 								$precioUnitario = $precio['precio-unitario'];
 								$precioDescuento = $precio['precio-descuento'];
 								$descuento = $precio['descuento_bol'];
+								$recomendado = get_field('recomendaciones');
 
+
+								$recomendados = array();
 								// Comprobar si hay imágenes en el repeater
 								if ($imagenes) {
 									
@@ -141,7 +144,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 						?>
 
 						<!-- Estructura HTML para cada platillo -->
-						<div class="plato js-abrir-plato js-plato-menu js-pantalla-contenida plato--active"
+						<div class="plato js-abrir-plato js-plato-menu js-pantalla-contenida"
 							data-cat="<?php echo esc_attr($categoria[0]->slug); ?>"
 							data-titulo="<?php echo esc_attr($titulo); ?>"
 							data-precio="<?php echo esc_attr($precioUnitario); ?>"
@@ -150,7 +153,8 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 							data-gramos="<?php echo esc_attr($gramos); ?>"
 							data-descripcion="<?php echo esc_attr($descripcion); ?>"
 							data-ingredientes="<?php echo esc_attr($ingredientes); ?>"
-							data-imagenes="<?php echo esc_attr($data_imagenes); ?>">
+							data-imagenes="<?php echo esc_attr($data_imagenes); ?>"
+							data-recomendado="<?php echo esc_attr($recomendados); ?>">
 							<div class="imagen" style="background-image: url('<?php echo esc_url($imagenes_array[0]); ?>');"></div>
 							<div class="descripcion">
 								<div class="superior">
@@ -158,7 +162,14 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 										<span><?php echo esc_html($titulo); ?></span>
 									</div>
 									<div class="precio">
-										<?php echo '$' . number_format($precioUnitario, 2); ?> <!-- Formato de precio -->
+										<div class="normal">
+											<?php echo '$' . number_format($precioUnitario, 2); ?> <!-- Formato de precio -->
+										</div>
+										<?php if ($descuento) : ?>
+											<div class="descuento">
+												<span class="mini">ANTES</span> <span class="tachado"><?php echo '$' . number_format($precioDescuento, 2); ?></span>
+											</div>
+										<?php endif; ?>
 									</div>
 								</div>
 								<div class="tiempo">

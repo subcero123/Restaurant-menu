@@ -288,3 +288,19 @@ function cerrarVentanas() {
   // pantallaPromoIndividual[0].style.display = "none";
   // pantalla_principal[0].style.display = "block";
 }
+
+// Al cargar la pagina
+function  cargarPlatos() {
+  // A todos los platos con data-categoria="Recomendado" les agregamos la clase plato--active
+  var platos = document.getElementsByClassName("js-plato-menu");
+  
+  for(i = 0; i < platos.length; i++) {
+    if(platos[i].dataset.cat == "recomendado") {
+      platos[i].classList.add("plato--active");
+    }
+  }
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+  cargarPlatos();
+});
