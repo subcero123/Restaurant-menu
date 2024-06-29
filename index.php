@@ -87,185 +87,98 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 						</div>
 					</div>
 					<div class="carta-menu">
-						<div class="plato js-plato-menu js-abrir-plato plato--active" data-cat="recomendado" data-titulo="Corte New York" data-precio="250" data-tiempo="25" data-calorias="450" data-gramos="300" data-descripcion="Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa" data-ingredientes="Carne de res, papas, lechuga, jitomate, cebolla, aderezo de la casa" data-imagenes="platillo1.webp,platillo2.webp">
-							<div class="imagen" style="--src: url('<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/images/platillo1.webp');"></div>
+					<?php
+						// Define los argumentos para WP_Query
+						$args = array(
+							'post_type' => 'platillo',
+							'posts_per_page' => -1,
+						);
+
+						// Inicia WP_Query
+						$the_query = new WP_Query($args);
+
+						// Comprueba si hay platillos encontrados
+						if ($the_query->have_posts()) :
+							// Itera sobre cada platillo encontrado
+							while ($the_query->have_posts()) :
+								$the_query->the_post();
+
+								// Obtener el titulo del post
+								$titulo = get_the_title();
+								$tiempo = get_field('tiempo');
+								$calorias = get_field('calorias');
+								$gramos = get_field('gramos');
+								$descripcion = get_field('descripcion');
+								$ingredientes = get_field('ingredientes');
+								$imagenes = get_field('carrusel'); // Repeater de imágenes
+
+								// El precio es un group
+								$precio = get_field('precio');
+								$precioUnitario = $precio['precio-unitario'];
+								$precioDescuento = $precio['precio-descuento'];
+								$descuento = $precio['descuento_bol'];
+
+								// Comprobar si hay imágenes en el repeater
+								if ($imagenes) {
+									
+									$imagenes_array = array();
+									foreach ($imagenes as $imagen) {
+										// Obtener la URL de cada imagen en el repeater
+										$imagenes_array[] = $imagen['imagen']['url'];
+									}
+									// Convertir el array de URLs en una cadena separada por comas para data-imagenes
+									$data_imagenes = implode(',', $imagenes_array);
+								} else {
+									$data_imagenes = ''; // En caso de que no haya imágenes
+								}
+								
+								
+						?>
+
+						<!-- Estructura HTML para cada platillo -->
+						<div class="plato js-abrir-plato js-pantalla-contenida"
+							data-cat="recomendado"
+							data-titulo="<?php echo esc_attr($titulo); ?>"
+							data-precio="<?php echo esc_attr($precioUnitario); ?>"
+							data-tiempo="<?php echo esc_attr($tiempo); ?>"
+							data-calorias="<?php echo esc_attr($calorias); ?>"
+							data-gramos="<?php echo esc_attr($gramos); ?>"
+							data-descripcion="<?php echo esc_attr($descripcion); ?>"
+							data-ingredientes="<?php echo esc_attr($ingredientes); ?>"
+							data-imagenes="<?php echo esc_attr($data_imagenes); ?>">
+							<div class="imagen">
+								<!-- Mostrar la primera imagen del repeater -->
+								<?php if (!empty($imagenes_array)) : ?>
+									<img src="<?php echo esc_url($imagenes_array[0]); ?>" alt="">
+								<?php endif; ?>
+							</div>
 							<div class="descripcion">
 								<div class="superior">
 									<div class="nombre-platillo">
-										<span>Corte New York</span>
+										<span><?php echo esc_html($titulo); ?></span>
 									</div>
 									<div class="precio">
-										$250
+										<?php echo '$' . number_format($precioUnitario, 2); ?> <!-- Formato de precio -->
 									</div>
 								</div>
 								<div class="tiempo">
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>25 min aprox</span>
+									<span><?php echo esc_html($tiempo); ?> min aprox</span>
 								</div>
 								<div class="resumen">
-									<span>Corte de lomo angosto americano al grill de ...</span>
+									<span><?php echo esc_html($descripcion); ?></span>
 								</div>
 							</div>
 						</div>
-						<div class="plato js-plato-menu js-abrir-plato plato--active" data-cat="recomendado" data-titulo="Fajitas & Chilly" data-precio="299" data-tiempo="30" data-calorias="350" data-gramos="350" data-descripcion="Tiras de carne asada con pimientos y cebollas, servidas con tortillas." data-ingredientes="Fajitas cocinadas al gusto, acompañado de Chilly" data-imagenes="platillo2.webp,platillo1.webp">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo2.webp" alt="">
-							</div>
-							<div class="descripcion">
-								<div class="superior">
-									<div class="nombre-platillo">
-										<span>Fajitas & Chilly</span>
-									</div>
-									<div class="precio">
-										<div class="normal">
-											$299
-										</div>
-										<div class="descuento">
-											<span class="mini">ANTES</span> <span class="tachado">$350</span>
-										</div>
-									</div>
-								</div>
-								<div class="tiempo">
-															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>30 min aprox</span>
-								</div>
-								<div class="resumen">
-									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-								</div>
-							</div>
-						</div>
-						<div class="plato js-plato-menu plato--active" data-cat="recomendado" data-titulo="Cilantro Pesto Pasta" data-precio="229">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo3.webp" alt="">
-							</div>
-							<div class="descripcion">
-								<div class="superior">
-									<div class="nombre-platillo">
-										<span>Cilantro Pesto Pasta</span>
-									</div>
-									<div class="precio">
-										$229
-									</div>
-								</div>
-								<div class="tiempo">
-															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>22 min aprox</span>
-								</div>
-								<div class="resumen">
-									<span>Pasta de la casa aderezada con nuestra iconica...</span>
-								</div>
-							</div>
-						</div>
-						<div class="plato js-plato-menu plato--active" data-cat="recomendado" data-titulo="Bowl Especial Picante" data-precio="250">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
-							</div>
-							<div class="descripcion">
-								<div class="superior">
-									<div class="nombre-platillo">
-										<span>Bowl Especial Picante</span>
-									</div>
-									<div class="precio">
-										$250
-									</div>
-								</div>
-								<div class="tiempo">
-															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>30 min aprox</span>
-								</div>
-								<div class="resumen">
-									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-								</div>
-							</div>
-						</div>
-						<div class="plato js-plato-menu" data-cat="hamburguesas" data-titulo="Bowl Especial Picante" data-precio="250">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
-							</div>
-							<div class="descripcion">
-								<div class="superior">
-									<div class="nombre-platillo">
-										<span>Bowl Especial Picante</span>
-									</div>
-									<div class="precio">
-										$250
-									</div>
-								</div>
-								<div class="tiempo">
-															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>30 min aprox</span>
-								</div>
-								<div class="resumen">
-									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-								</div>
-							</div>
-						</div>
-						<div class="plato js-plato-menu" data-cat="pasta" data-titulo="Cilantro Pesto Pasta" data-precio="229">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo3.webp" alt="">
-							</div>
-							<div class="descripcion">
-								<div class="superior">
-									<div class="nombre-platillo">
-										<span>Cilantro Pesto Pasta</span>
-									</div>
-									<div class="precio">
-										$229
-									</div>
-								</div>
-								<div class="tiempo">
-															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>22 min aprox</span>
-								</div>
-								<div class="resumen">
-									<span>Pasta de la casa aderezada con nuestra iconica...</span>
-								</div>
-							</div>
-						</div>
-						<div class="plato js-plato-menu" data-cat="pasta" data-titulo="Bowl Especial Picante" data-precio="250">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
-							</div>
-							<div class="descripcion">
-								<div class="superior">
-									<div class="nombre-platillo">
-										<span>Bowl Especial Picante</span>
-									</div>
-									<div class="precio">
-										$250
-									</div>
-								</div>
-								<div class="tiempo">
-															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>30 min aprox</span>
-								</div>
-								<div class="resumen">
-									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-								</div>
-							</div>
-						</div>
-						<div class="plato js-plato-menu" data-cat="hamburguesas" data-titulo="Bowl Especial Picante" data-precio="250">
-							<div class="imagen">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo4.webp" alt="">
-							</div>
-							<div class="descripcion">
-								<div class="superior">
-									<div class="nombre-platillo">
-										<span>Hamburguesa a la carta</span>
-									</div>
-									<div class="precio">
-										$250
-									</div>
-								</div>
-								<div class="tiempo">
-															<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
-									<span>30 min aprox</span>
-								</div>
-								<div class="resumen">
-									<span>Deliciosas fajitas de Pollo o Res aderezadas...</span>
-								</div>
-							</div>
-						</div>
+
+						<?php
+							endwhile;
+							wp_reset_postdata(); // Restablece los datos del post
+						else :
+							// No se encontraron platillos
+							echo 'No hay platillos disponibles.';
+						endif;
+					?>
 					</div>
 				</div>
 			</div>
