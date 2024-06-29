@@ -68,8 +68,7 @@ jQuery(function ($) {
       $.each(imagenesArray, function (index, value) {
         html +=
           '<li class="slide"><img src="' +
-          ruta +
-          "wp-content/themes/RestP/assets/images/" +
+
           value +
           '" /></li>';
       });

@@ -105,13 +105,18 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 
 								// Obtener el titulo del post
 								$titulo = get_the_title();
-								$tiempo = get_field('tiempo');
-								$calorias = get_field('calorias');
+								$categoria = get_the_category();
+								$tiempo = get_field('tiempo_preparacion');
+								$calorias = get_field('numero_calorias');
 								$gramos = get_field('gramos');
 								$descripcion = get_field('descripcion');
+								// remover los tags html
+								$descripcion = strip_tags($descripcion);
+								$descripcionSmall = substr($descripcion, 0, 50) . '...';
 								$ingredientes = get_field('ingredientes');
+								// remover los tags html
+								$ingredientes = strip_tags($ingredientes);
 								$imagenes = get_field('carrusel'); // Repeater de imágenes
-
 								// El precio es un group
 								$precio = get_field('precio');
 								$precioUnitario = $precio['precio-unitario'];
@@ -136,8 +141,8 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 						?>
 
 						<!-- Estructura HTML para cada platillo -->
-						<div class="plato js-abrir-plato js-pantalla-contenida"
-							data-cat="recomendado"
+						<div class="plato js-abrir-plato js-plato-menu js-pantalla-contenida plato--active"
+							data-cat="<?php echo esc_attr($categoria[0]->slug); ?>"
 							data-titulo="<?php echo esc_attr($titulo); ?>"
 							data-precio="<?php echo esc_attr($precioUnitario); ?>"
 							data-tiempo="<?php echo esc_attr($tiempo); ?>"
@@ -146,12 +151,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 							data-descripcion="<?php echo esc_attr($descripcion); ?>"
 							data-ingredientes="<?php echo esc_attr($ingredientes); ?>"
 							data-imagenes="<?php echo esc_attr($data_imagenes); ?>">
-							<div class="imagen">
-								<!-- Mostrar la primera imagen del repeater -->
-								<?php if (!empty($imagenes_array)) : ?>
-									<img src="<?php echo esc_url($imagenes_array[0]); ?>" alt="">
-								<?php endif; ?>
-							</div>
+							<div class="imagen" style="background-image: url('<?php echo esc_url($imagenes_array[0]); ?>');"></div>
 							<div class="descripcion">
 								<div class="superior">
 									<div class="nombre-platillo">
@@ -166,7 +166,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 									<span><?php echo esc_html($tiempo); ?> min aprox</span>
 								</div>
 								<div class="resumen">
-									<span><?php echo esc_html($descripcion); ?></span>
+									<span><?php echo esc_html($descripcionSmall); ?></span>
 								</div>
 							</div>
 						</div>
