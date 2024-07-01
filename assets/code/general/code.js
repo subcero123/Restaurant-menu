@@ -75,7 +75,6 @@ jQuery(function ($) {
 
       // Iterar sobre el data-recomendado que es un json
       var recomendado = $(this).data("recomendado");
-      console.log(recomendado);
 
       var htmlRecomendado = "";
       $.each(recomendado, function (index, value) {
@@ -85,7 +84,7 @@ jQuery(function ($) {
         }
 
         htmlRecomendado += `
-            <div class="plato plato--active js-pantalla-contenida js-abrir-plato-sugerencia">
+            <div class="plato plato--active js-pantalla-contenida js-abrir-plato-sugerencia" data-id="${value.id}">
                 <div class="imagen" style="background-image: url(${value.imagenes})">
                 </div>
                 <div class="descripcion">
@@ -105,7 +104,7 @@ jQuery(function ($) {
                         <span>${value.tiempo} min aprox</span>
                     </div>
                     <div class="resumen">
-                        <span>Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa</span>
+                        <span>${value.descripcionSmall}</span>
                     </div>
                     
                 </div>
@@ -114,6 +113,16 @@ jQuery(function ($) {
       });
 
       $('#carta-sugerencias').html(htmlRecomendado);
+
+      // Agregar evento click a los platos sugeridos
+      $(".js-abrir-plato-sugerencia").click(function () {
+        console.log("hola");
+        cerrarVentanas();
+        // Abrir el plato con id data-id
+        var idPlato = $(this).data("id");
+        var plato = $(`.js-abrir-plato[data-id=${idPlato}]`);
+        plato.click();
+       });
 
 
       function destroyFlexslider() {

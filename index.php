@@ -195,7 +195,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 						?>
 
 						<!-- Estructura HTML para cada platillo -->
-						<div class="plato js-abrir-plato js-plato-menu js-pantalla-contenida"
+						<div id="<?php echo esc_attr($id);?>" class="plato js-abrir-plato js-plato-menu js-pantalla-contenida"
 							data-id = "<?php echo esc_attr($id); ?>"
 							data-cat="<?php echo esc_attr($categoria); ?>"
 							data-titulo="<?php echo esc_attr($titulo); ?>"
