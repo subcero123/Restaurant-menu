@@ -124,6 +124,8 @@ jQuery(function ($) {
         plato.click();
        });
 
+       $(".cerrar-ventana").addClass("cerrar-ventana--animado");
+
 
       function destroyFlexslider() {
         var $slider = $(".flexslider-top");
@@ -148,6 +150,7 @@ jQuery(function ($) {
 
       $("#texto-promo-individual").html(textoPromo);
       $("#imagen-promo-individual").find("img").attr("src", imagen);
+      $(".cerrar-ventana").addClass("cerrar-ventana--animado");
     });
 
     $("#about-us").click(function () {
@@ -161,6 +164,9 @@ jQuery(function ($) {
         animation: "slide",
         directionNav: false, // Oculta los botones de dirección (previo y siguiente)
       });
+
+      $(".cerrar-ventana").addClass("cerrar-ventana--animado");
+
     });
   });
 
@@ -208,6 +214,8 @@ promos.addEventListener("click", function () {
   document
     .getElementsByClassName("overlay")[0]
     .classList.add("overlay--active");
+  document.getElementsByClassName("cerrar-ventana")[0].classList.add("cerrar-ventana--animado");
+
 });
 
 faq.addEventListener("click", function () {
@@ -219,6 +227,8 @@ faq.addEventListener("click", function () {
   document
     .getElementsByClassName("overlay")[0]
     .classList.add("overlay--active");
+
+  document.getElementsByClassName("cerrar-ventana")[0].classList.add("cerrar-ventana--animado");
 });
 
 // var platos = document.getElementsByClassName("plato");
@@ -332,6 +342,8 @@ function cerrarVentanas() {
   document
     .getElementsByClassName("overlay")[0]
     .classList.remove("overlay--derecha");
+
+  document.getElementsByClassName("cerrar-ventana")[0].classList.remove("cerrar-ventana--animado");
 
   // pantallaAboutUs[0].style.display = "none";
   // pantallaPromos[0].style.display = "none";

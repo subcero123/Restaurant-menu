@@ -1005,6 +1005,7 @@ body {
 .overlay--derecha .cerrar-ventana {
   top: 10px !important;
   left: 10px !important;
+  animation: slideIn 0.5s ease-out;
 }
 .overlay .cerrar-ventana {
   z-index: 5;
@@ -1021,6 +1022,9 @@ body {
   font-weight: bolder;
   background-color: rgb(255, 255, 255);
 }
+.overlay .cerrar-ventana--animado {
+  animation: slideIn 0.5s ease-out;
+}
 .overlay .cerrar-ventana span {
   position: absolute;
   font-weight: bold;
@@ -1033,4 +1037,16 @@ body {
 .overlay--active {
   z-index: 2;
   transition: all 0.1s ease-out;
+}
+
+/* Definición de la animación */
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
