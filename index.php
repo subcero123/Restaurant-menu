@@ -126,6 +126,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 								$the_query->the_post();
 
 								// Obtener el titulo del post
+								$id = get_the_ID();
 								$titulo = get_the_title();
 								$categoria = get_the_category();
 								// Concatenar las categorías en un string separado por comas
@@ -149,8 +150,33 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 								$descuento = $precio['descuento_bol'];
 								$recomendado = get_field('recomendaciones');
 
-
+								// Recomendado es un array de post objects necesitamos obtener los títulos, categorías y precios ...
 								$recomendados = array();
+								foreach ($recomendado as $recomendado) {
+									// obtener los url de las imagenes
+									$imagenes = get_field('carrusel', $recomendado->ID);
+									$imagenes_array = array();
+									foreach ($imagenes as $imagen) {
+										$imagenes_array[] = $imagen['imagen']['url'];
+										// Solo la primera imagen
+										break;
+									}
+									$recomendados[] = array(
+										// id del post
+										'id' => $recomendado->ID,
+										'titulo' => $recomendado->post_title,
+										'tiempo' => get_field('tiempo_preparacion', $recomendado->ID),
+										'descripcionSmall' => substr(get_field('descripcion', $recomendado->ID), 0, 50) . '...',
+										'imagenes' => $imagenes_array,
+										'precio' => get_field('precio', $recomendado->ID)['precio-unitario'],
+										'precioDescuento' => get_field('precio', $recomendado->ID)['precio-descuento'],
+										'descuento' => get_field('precio', $recomendado->ID)['descuento_bol'],		
+									);
+								}
+
+								// Recomendados a string
+								$recomendados = json_encode($recomendados);
+
 								// Comprobar si hay imágenes en el repeater
 								if ($imagenes) {
 									
@@ -170,6 +196,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 
 						<!-- Estructura HTML para cada platillo -->
 						<div class="plato js-abrir-plato js-plato-menu js-pantalla-contenida"
+							data-id = "<?php echo esc_attr($id); ?>"
 							data-cat="<?php echo esc_attr($categoria); ?>"
 							data-titulo="<?php echo esc_attr($titulo); ?>"
 							data-precio="<?php echo esc_attr($precioUnitario); ?>"
@@ -372,8 +399,6 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 								$precioDescuento = $precio['precio-descuento'];
 								$descuento = $precio['descuento_bol'];
 								$recomendado = get_field('recomendaciones');
-
-
 								$recomendados = array();
 								// Comprobar si hay imágenes en el repeater
 								if ($imagenes) {
@@ -527,7 +552,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 						<div class="circulo"></div>
 						<span>Te recomendamos acompañar este platillo con</span>
 					</div>
-					<div class="carta-menu">
+					<div class="carta-menu" id="carta-sugerencias">
 					<div class="plato js-abrir-plato plato--active js-pantalla-contenida" data-cat="recomendado" data-titulo="Corte New York" data-precio="250" data-tiempo="25" data-calorias="450" data-gramos="300" data-descripcion="Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa" data-ingredientes="Carne de res, papas, lechuga, jitomate, cebolla, aderezo de la casa" data-imagenes="platillo1.webp,platillo2.webp">
 						<div class="imagen">
 							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/platillo1.webp" alt="">

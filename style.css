@@ -330,7 +330,6 @@ body {
   overflow: scroll;
 }
 .pantalla-principal .contenedor-principal .contenedor-carta-menu {
-  margin-right: 15px;
   margin-left: 15px;
   margin-top: 3.5rem;
   margin-bottom: 1rem;
@@ -344,6 +343,9 @@ body {
   margin-bottom: 1.5rem;
   font-weight: 600;
 }
+.pantalla-principal .contenedor-principal .contenedor-carta-menu .carta-menu {
+  padding-right: 15px;
+}
 .pantalla-principal .contenedor-principal .contenedor-carta-menu .contenedor-categoria {
   width: 100%;
   overflow-x: hidden;
@@ -354,7 +356,8 @@ body {
   right: 0;
   top: 0;
   height: 25px;
-  width: 25px;
+  width: 160px;
+  pointer-events: none;
   background: linear-gradient(90deg, transparent 0%, var(--color-fondo) 100%);
 }
 .pantalla-principal .contenedor-principal .contenedor-carta-menu .categorias {
@@ -700,7 +703,7 @@ body {
 }
 .pantalla-preguntas-frecuentes .card .titulo {
   display: flex;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-align: start;
   justify-content: space-between;
@@ -1019,8 +1022,13 @@ body {
   background-color: rgb(255, 255, 255);
 }
 .overlay .cerrar-ventana span {
-  position: relative;
+  position: absolute;
   font-weight: bold;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -1.4px);
+  line-height: 0;
+  font-size: 1.4em;
 }
 .overlay--active {
   z-index: 2;

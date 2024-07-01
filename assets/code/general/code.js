@@ -1,5 +1,4 @@
 jQuery(function ($) {
-
   $(document).ready(function () {
     $(".flexslider").flexslider({
       animation: "slide",
@@ -9,10 +8,8 @@ jQuery(function ($) {
     });
   });
 
-
   // Can also be used with $(document).ready()
   $(window).load(function () {
-
     // $('.flexslider-top').flexslider({
     // 	animation: "slide",
     //   	directionNav: false, // Oculta los botones de dirección (previo y siguiente)
@@ -21,16 +18,15 @@ jQuery(function ($) {
 
     $(".js-abrir-plato").click(function () {
       // Verificar si contiene la clase js-pantalla-contenida
-      
-      if($(this).hasClass("js-pantalla-contenida")) {
+
+      if ($(this).hasClass("js-pantalla-contenida")) {
         cerrarVentanas();
 
         // delay de 1 segundo
-        setTimeout(function() {
+        setTimeout(function () {
           mostrarPlato();
-        } , 100);
-      }
-      else{
+        }, 100);
+      } else {
         cerrarVentanas();
         mostrarPlato();
       }
@@ -63,17 +59,9 @@ jQuery(function ($) {
       //  Obtener el data de imagenes
       var imagenes = $(this).data("imagenes");
       var imagenesArray = imagenes.split(",");
-
-      // Obtener la ruta actual
-      var ruta = window.location.href;
-
       var html = "";
       $.each(imagenesArray, function (index, value) {
-        html +=
-          '<li class="slide"><img src="' +
-
-          value +
-          '" /></li>';
+        html += '<li class="slide"><img src="' + value + '" /></li>';
       });
 
       $("#imagenes-platillo-individual").html(html);
@@ -84,6 +72,49 @@ jQuery(function ($) {
         animation: "slide",
         directionNav: false, // Oculta los botones de dirección (previo y siguiente)
       });
+
+      // Iterar sobre el data-recomendado que es un json
+      var recomendado = $(this).data("recomendado");
+      console.log(recomendado);
+
+      var htmlRecomendado = "";
+      $.each(recomendado, function (index, value) {
+        var descuentoHtml = "";
+        if (value.descuento) {
+          descuentoHtml = `<div class="descuento"> <span class="mini">ANTES</span> <span class="tachado">${value.precioDescuento}</span>    </div>`;
+        }
+
+        htmlRecomendado += `
+            <div class="plato plato--active js-pantalla-contenida js-abrir-plato-sugerencia">
+                <div class="imagen" style="background-image: url(${value.imagenes})">
+                </div>
+                <div class="descripcion">
+                    <div class="superior">
+                        <div class="nombre-platillo">
+                            <span>${value.titulo}</span>
+                        </div>
+                        <div class="precio">
+                            <div class="normal">
+                              $${value.precio}
+                            </div>
+                            ${descuentoHtml}
+                        </div>
+                    </div>
+                    <div class="tiempo">
+                        <img src="//localhost:3000/work/wordpress/RestP/wp-content/themes/RestP/assets/images/reloj.svg" alt="Descripción del SVG">
+                        <span>${value.tiempo} min aprox</span>
+                    </div>
+                    <div class="resumen">
+                        <span>Corte de lomo angosto americano al grill de carbón, acompañado de papas a la francesa y ensalada de la casa</span>
+                    </div>
+                    
+                </div>
+            </div>
+        `;
+      });
+
+      $('#carta-sugerencias').html(htmlRecomendado);
+
 
       function destroyFlexslider() {
         var $slider = $(".flexslider-top");
@@ -107,9 +138,7 @@ jQuery(function ($) {
       var imagen = $(this).data("imagen");
 
       $("#texto-promo-individual").html(textoPromo);
-      $("#imagen-promo-individual")
-        .find("img")
-        .attr("src",imagen);
+      $("#imagen-promo-individual").find("img").attr("src", imagen);
     });
 
     $("#about-us").click(function () {
@@ -134,7 +163,6 @@ var i;
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function () {
-
     // Obtenemos el hijo de la card de clase titulo
     var content = this.children[0];
     // Toggle de la clase active
@@ -168,8 +196,9 @@ promos.addEventListener("click", function () {
     .getElementsByClassName("pantalla-promos")[0]
     .classList.add("pantalla-card--active");
   document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
-  document.getElementsByClassName("overlay")[0].classList.add("overlay--active");
-
+  document
+    .getElementsByClassName("overlay")[0]
+    .classList.add("overlay--active");
 });
 
 faq.addEventListener("click", function () {
@@ -178,8 +207,9 @@ faq.addEventListener("click", function () {
     .getElementsByClassName("pantalla-preguntas-frecuentes")[0]
     .classList.add("pantalla-card--active");
   document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
-  document.getElementsByClassName("overlay")[0].classList.add("overlay--active");
-
+  document
+    .getElementsByClassName("overlay")[0]
+    .classList.add("overlay--active");
 });
 
 // var platos = document.getElementsByClassName("plato");
@@ -196,16 +226,22 @@ function mostrarPlato() {
     .classList.add("pantalla-card--active");
   document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
   // Agregar a overlay la clase overlay--active
-  document.getElementsByClassName("overlay")[0].classList.add("overlay--active");
-  document.getElementsByClassName("overlay")[0].classList.add("overlay--derecha");
+  document
+    .getElementsByClassName("overlay")[0]
+    .classList.add("overlay--active");
+  document
+    .getElementsByClassName("overlay")[0]
+    .classList.add("overlay--derecha");
 }
 
 function mostrarPromo() {
   document
     .getElementsByClassName("pantalla-promo-individual")[0]
     .classList.add("pantalla-card--active");
-    document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
-    document.getElementsByClassName("overlay")[0].classList.add("overlay--active");
+  document.getElementsByTagName("body")[0].classList.add("quitar-overflow");
+  document
+    .getElementsByClassName("overlay")[0]
+    .classList.add("overlay--active");
 }
 
 var regresar = document.getElementsByClassName("contenedor-regresar");
@@ -228,11 +264,9 @@ for (i = 0; i < categorias.length; i++) {
 
     // Obtener el data de la categoria seleccionada
     var categoria = this.dataset.categoria;
-    
 
     // Iteramos sobre los hijos de .platos
     var platos = document.getElementsByClassName("js-plato-menu");
-
 
     for (i = 0; i < platos.length; i++) {
       platos[i].classList.remove("plato--active");
@@ -283,10 +317,12 @@ function cerrarVentanas() {
   pantallaPromoIndividual[0].classList.remove("pantalla-card--active");
   pantalla_principal[0].classList.remove("pantalla-card--active");
   body[0].classList.remove("quitar-overflow");
-  document.getElementsByClassName("overlay")[0].classList.remove("overlay--active");
-  document.getElementsByClassName("overlay")[0].classList.remove("overlay--derecha");
-
-
+  document
+    .getElementsByClassName("overlay")[0]
+    .classList.remove("overlay--active");
+  document
+    .getElementsByClassName("overlay")[0]
+    .classList.remove("overlay--derecha");
 
   // pantallaAboutUs[0].style.display = "none";
   // pantallaPromos[0].style.display = "none";
@@ -297,24 +333,24 @@ function cerrarVentanas() {
 }
 
 // Al cargar la pagina
-function  cargarPlatos() {
+function cargarPlatos() {
   // A todos los platos con data-categoria="Recomendado" les agregamos la clase plato--active
   var platos = document.getElementsByClassName("js-plato-menu");
-  
-  for(i = 0; i < platos.length; i++) {
+
+  for (i = 0; i < platos.length; i++) {
     var categoriasPlato = platos[i].dataset.cat;
-      // minusculas
-      categoriasPlato = categoriasPlato.toLowerCase();
-      // Quitar espacios
-      categoriasPlato = categoriasPlato.replace(/\s/g, "");
-      categoriasPlato = categoriasPlato.split(",");
-      console.log(categoriasPlato);
-    if(categoriasPlato.includes("recomendado")) {
+    // minusculas
+    categoriasPlato = categoriasPlato.toLowerCase();
+    // Quitar espacios
+    categoriasPlato = categoriasPlato.replace(/\s/g, "");
+    categoriasPlato = categoriasPlato.split(",");
+
+    if (categoriasPlato.includes("recomendado")) {
       platos[i].classList.add("plato--active");
     }
   }
-};
+}
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   cargarPlatos();
 });
