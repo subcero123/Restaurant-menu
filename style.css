@@ -362,7 +362,7 @@ body {
 }
 .pantalla-principal .contenedor-principal .contenedor-carta-menu .categorias {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   width: 100%;
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;

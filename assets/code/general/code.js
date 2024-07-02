@@ -298,9 +298,6 @@ for (i = 0; i < categorias.length; i++) {
       categoriasPlato = categoriasPlato.replace(/\s/g, "");
       categoriasPlato = categoriasPlato.split(",");
 
-      console.log(categoriasPlato);
-      console.log(categoria);
-
       // Si alguna categoria del plato es igual a la categoria seleccionada
       if (categoriasPlato.includes(categoria)) {
         platos[i].classList.add("plato--active");
