@@ -283,6 +283,8 @@ for (i = 0; i < categorias.length; i++) {
 
     // Obtener el data de la categoria seleccionada
     var categoria = this.dataset.categoria;
+    // Minusculas
+    categoria = categoria.toLowerCase();
 
     // Iteramos sobre los hijos de .platos
     var platos = document.getElementsByClassName("js-plato-menu");

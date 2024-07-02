@@ -385,6 +385,7 @@ body {
 .pantalla-principal .contenedor-principal .contenedor-carta-menu .categorias .categoria--selected {
   background-color: black;
   color: white;
+  z-index: 2;
 }
 
 .pantalla-about-us {
@@ -710,6 +711,8 @@ body {
   align-items: center;
   cursor: pointer;
   user-select: none;
+  word-break: normal;
+  line-height: 1.2rem;
 }
 .pantalla-preguntas-frecuentes .card .titulo--active {
   margin-bottom: 1rem;

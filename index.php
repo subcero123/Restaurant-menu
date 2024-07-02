@@ -1,10 +1,10 @@
 <?php
 
 // Obtener los colores desde los campos personalizados de ACF
-$color_fondo = get_field('color-fondo', 19);  // Reemplaza 'primary_color' con el nombre real del campo
-$color_titulo = get_field('color-titulo', 19);  // Reemplaza 'secondary_color' con el nombre real del campo
-$color_texto = get_field('color-texto', 19);  // Reemplaza 'tertiary_color' con el nombre real del campo
-$color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con el nombre real del campo
+$color_fondo = get_field('color-fondo', 'options');  // Reemplaza 'primary_color' con el nombre real del campo
+$color_titulo = get_field('color-titulo', 'options');  // Reemplaza 'secondary_color' con el nombre real del campo
+$color_texto = get_field('color-texto', 'options');  // Reemplaza 'tertiary_color' con el nombre real del campo
+$color_acento = get_field('color-acento', 'options');  // Reemplaza 'accent_color' con el nombre real del campo
 ?>
 
 <style>
@@ -94,6 +94,38 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 							<div class="categoria categoria--selected" data-categoria="recomendado">
 								<span>Recomendado</span>
 							</div>
+
+							<!-- Obtener las categorias que existen en los posts -->
+							<?php
+								// Obtener todas las categorías de los posts
+								$categorias = get_categories(array(
+									'taxonomy' => 'category', // Asegúrate de que la taxonomía sea correcta, en este caso es 'category'
+									'hide_empty' => 1, // Mostrar todas las categorías, incluso si no tienen posts
+								));
+
+								// Comprobar si hay categorías
+								if ($categorias) {
+									// Iterar sobre cada categoría
+									foreach ($categorias as $categoria) {
+										// Obtener el nombre de la categoría
+										$nombre_categoria = $categoria->name;
+										// Si es uncategorized no mostrar
+										if ($nombre_categoria == 'Uncategorized' || 'Recomendado' == $nombre_categoria || 'Promocion' == $nombre_categoria) {
+											continue;
+										}
+
+										// Imprimir el nombre de la categoría
+										echo '<div class="categoria" data-categoria="' . esc_attr($nombre_categoria) . '"><span>' . esc_html($nombre_categoria) . '</span></div>';
+									}
+								} else {
+									// No se encontraron categorías
+									echo 'No hay categorías disponibles.';
+								}
+							?>
+
+							<!-- <div class="categoria categoria--selected" data-categoria="recomendado">
+								<span>Recomendado</span>
+							</div>
 							<div class="categoria" data-categoria="hamburguesas">
 								<span>Hamburguesas</span>
 							</div>
@@ -105,7 +137,7 @@ $color_acento = get_field('color-acento', 19);  // Reemplaza 'accent_color' con 
 							</div>
 							<div class="categoria">
 								<span>Sandwich</span>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="carta-menu">
