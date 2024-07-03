@@ -780,6 +780,8 @@ body {
   overflow: hidden;
   justify-content: center;
   align-items: stretch;
+  flex: 1;
+  max-height: 150px;
   opacity: 0;
   position: absolute;
   transform: translateY(10px);
@@ -822,18 +824,20 @@ body {
 }
 .carta-menu .plato .descripcion .superior .nombre-platillo {
   font-weight: bold;
+  width: 60%;
 }
 .carta-menu .plato .descripcion .superior .precio {
-  width: 50%;
+  width: 40%;
   color: orangered;
   font-weight: bold;
   position: relative;
   height: fit-content;
+  font-size: 0.7rem;
 }
 .carta-menu .plato .descripcion .superior .precio .descuento {
   position: absolute;
   top: 105%;
-  left: -11%;
+  left: -11px;
   color: #797979;
   display: flex;
   font-weight: normal;
@@ -906,8 +910,8 @@ body {
 
 .flexslider-top {
   position: relative !important;
-  margin-bottom: 3rem;
-  height: 30%;
+  margin-bottom: 4rem;
+  height: fit-content;
 }
 .flexslider-top .slide {
   overflow: hidden;
@@ -920,7 +924,7 @@ body {
   object-fit: cover;
 }
 .flexslider-top .flex-control-nav {
-  top: 110%;
+  bottom: -30px;
 }
 .flexslider-top .flex-control-nav a {
   background-color: black;
