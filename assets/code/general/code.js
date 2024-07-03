@@ -64,6 +64,11 @@ jQuery(function ($) {
         html += '<li class="slide"><img src="' + value + '" /></li>';
       });
 
+      // Si solo es una imagen
+      if (imagenesArray.length == 1) {
+        html += '<li class="slide"><img src="' + imagenesArray[0] + '" /></li>';
+      }
+
       $("#imagenes-platillo-individual").html(html);
 
       destroyFlexslider();
