@@ -85,7 +85,7 @@ jQuery(function ($) {
       $.each(recomendado, function (index, value) {
         var descuentoHtml = "";
         if (value.descuento) {
-          descuentoHtml = `<div class="descuento"> <span class="mini">ANTES</span> <span class="tachado">${value.precioDescuento}</span>    </div>`;
+          descuentoHtml = `<div class="descuento"> <span class="mini">ANTES</span> <span class="tachado">$${value.precioDescuento}</span>    </div>`;
         }
 
         htmlRecomendado += `

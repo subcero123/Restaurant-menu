@@ -299,8 +299,9 @@ body {
   flex-direction: column;
 }
 .pantalla-principal .contenedor-slider .promo-unica {
-  width: 90%;
-  margin: 0 auto;
+  width: calc(100% - 30px);
+  margin-left: 15px;
+  margin-right: 15px;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
@@ -698,6 +699,9 @@ body {
   align-items: center;
   margin-right: 5px;
 }
+.pantalla-platillo-individual .sugerencias .plato .descuento {
+  left: 4px !important;
+}
 
 .pantalla-preguntas-frecuentes .titulo-principal {
   font-size: 1.2rem;
@@ -833,6 +837,9 @@ body {
   position: relative;
   height: fit-content;
   font-size: 0.7rem;
+}
+.carta-menu .plato .descripcion .superior .precio .normal {
+  text-align: end;
 }
 .carta-menu .plato .descripcion .superior .precio .descuento {
   position: absolute;
