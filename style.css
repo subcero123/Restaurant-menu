@@ -298,6 +298,17 @@ body {
   display: flex;
   flex-direction: column;
 }
+.pantalla-principal .contenedor-slider .promo-unica {
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e3dbdb;
+}
+.pantalla-principal .contenedor-slider .promo-unica li {
+  list-style-type: none;
+}
 .pantalla-principal .contenedor-slider .flexslider {
   background: transparent !important;
   border: 0px solid #000 !important;

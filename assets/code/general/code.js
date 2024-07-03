@@ -121,7 +121,6 @@ jQuery(function ($) {
 
       // Agregar evento click a los platos sugeridos
       $(".js-abrir-plato-sugerencia").click(function () {
-        console.log("hola");
         cerrarVentanas();
         // Abrir el plato con id data-id
         var idPlato = $(this).data("id");
