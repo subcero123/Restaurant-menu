@@ -349,6 +349,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin-bottom: 50px;
+  min-height: 400px;
 }
 .pantalla-principal .contenedor-principal .contenedor-carta-menu .titulo-menu {
   font-size: 1.5rem;
@@ -404,11 +405,28 @@ body {
   position: relative;
 }
 .pantalla-about-us .flexslider-top--about {
-  margin-bottom: 3rem;
-  height: 200px;
+  position: relative !important;
+  margin-bottom: 4rem;
+  height: fit-content;
+}
+.pantalla-about-us .flexslider-top--about .slide {
+  overflow: hidden;
+  border-radius: 0px !important;
+}
+.pantalla-about-us .flexslider-top--about .slide img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 }
 .pantalla-about-us .flexslider-top--about .flex-control-nav {
-  bottom: 65%;
+  bottom: -30px;
+}
+.pantalla-about-us .flexslider-top--about .flex-control-nav a {
+  background-color: black;
+}
+.pantalla-about-us .flexslider-top--about .flex-control-nav .flex-active {
+  background-color: orangered !important;
 }
 .pantalla-about-us .cerrar-ventana {
   position: absolute;
@@ -510,9 +528,6 @@ body {
   margin-bottom: 1.5rem;
   font-weight: 600;
   text-align: center;
-}
-.pantalla-promos .carta-menu {
-  min-height: 0px;
 }
 .pantalla-promos .plato {
   display: flex !important;
@@ -678,9 +693,6 @@ body {
   flex-direction: column;
   margin-top: 1.5rem;
 }
-.pantalla-platillo-individual .sugerencias .carta-menu {
-  min-height: 0;
-}
 .pantalla-platillo-individual .sugerencias .encabezado {
   display: flex;
   align-items: center;
@@ -767,7 +779,6 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 450px;
   position: relative;
 }
 .carta-menu .plato {
@@ -809,7 +820,6 @@ body {
   background-image: var(--src);
   background-size: cover;
   background-position: 50% 50%;
-  aspect-ratio: 16/9;
 }
 .carta-menu .plato .descripcion {
   width: 50%;
@@ -823,6 +833,7 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  line-height: 15px;
   font-size: 0.76rem;
   margin-bottom: 10px;
 }
@@ -844,7 +855,7 @@ body {
 .carta-menu .plato .descripcion .superior .precio .descuento {
   position: absolute;
   top: 105%;
-  left: -11px;
+  right: 0;
   color: #797979;
   display: flex;
   font-weight: normal;
@@ -876,7 +887,6 @@ body {
 }
 .carta-menu .plato .resumen {
   font-size: 0.63rem;
-  margin-bottom: 7px;
   line-height: 15px;
   word-break: break-all;
 }

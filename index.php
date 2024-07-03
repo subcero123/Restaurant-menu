@@ -186,7 +186,7 @@ $color_acento = get_field('color-acento', 'options');  // Reemplaza 'accent_colo
 								$descripcion = get_field('descripcion');
 								// remover los tags html
 								$descripcion = strip_tags($descripcion);
-								$descripcionSmall = substr($descripcion, 0, 50) . '...';
+								$descripcionSmall = substr($descripcion, 0, 35) . '...';
 								$ingredientes = get_field('ingredientes');
 								// remover los tags html
 								$ingredientes = strip_tags($ingredientes);
@@ -214,7 +214,7 @@ $color_acento = get_field('color-acento', 'options');  // Reemplaza 'accent_colo
 										'id' => $recomendado->ID,
 										'titulo' => $recomendado->post_title,
 										'tiempo' => get_field('tiempo_preparacion', $recomendado->ID),
-										'descripcionSmall' => substr(get_field('descripcion', $recomendado->ID), 0, 50) . '...',
+										'descripcionSmall' => substr(get_field('descripcion', $recomendado->ID), 0, 35) . '...',
 										'imagenes' => $imagenes_array,
 										'precio' => get_field('precio', $recomendado->ID)['precio-unitario'],
 										'precioDescuento' => get_field('precio', $recomendado->ID)['precio-descuento'],
@@ -439,7 +439,7 @@ $color_acento = get_field('color-acento', 'options');  // Reemplaza 'accent_colo
 							$descripcion = get_field('descripcion');
 							// remover los tags html
 							$descripcion = strip_tags($descripcion);
-							$descripcionSmall = substr($descripcion, 0, 50) . '...';
+							$descripcionSmall = substr($descripcion, 0, 35) . '...';
 							$ingredientes = get_field('ingredientes');
 							// remover los tags html
 							$ingredientes = strip_tags($ingredientes);
@@ -467,7 +467,7 @@ $color_acento = get_field('color-acento', 'options');  // Reemplaza 'accent_colo
 									'id' => $recomendado->ID,
 									'titulo' => $recomendado->post_title,
 									'tiempo' => get_field('tiempo_preparacion', $recomendado->ID),
-									'descripcionSmall' => substr(get_field('descripcion', $recomendado->ID), 0, 50) . '...',
+									'descripcionSmall' => substr(get_field('descripcion', $recomendado->ID), 0, 35) . '...',
 									'imagenes' => $imagenes_array,
 									'precio' => get_field('precio', $recomendado->ID)['precio-unitario'],
 									'precioDescuento' => get_field('precio', $recomendado->ID)['precio-descuento'],
