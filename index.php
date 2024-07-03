@@ -57,12 +57,14 @@ $color_acento = get_field('color-acento', 'options');  // Reemplaza 'accent_colo
 
 							// Inicia WP_Query
 							$the_query = new WP_Query($args);
+							$contador = 0;
 
 							// Comprueba si hay platillos encontrados
 							if ($the_query->have_posts()) :
 								// Itera sobre cada platillo encontrado
 								while ($the_query->have_posts()) :
 									$the_query->the_post();
+									$contador++;
 									// Obtener los campos personalizados de ACF
 									$imagen_promocion = get_field('imagen_promocion');
 									$imagen_promocion = $imagen_promocion['url'];
@@ -74,6 +76,21 @@ $color_acento = get_field('color-acento', 'options');  // Reemplaza 'accent_colo
 									<?php
 								endwhile;
 								wp_reset_postdata();
+								// Si solo hay una promoción, duplicarla para que el slider funcione
+
+									if ($contador == 1) {
+										$the_query->the_post();
+										$imagen_promocion = get_field('imagen_promocion');
+										$imagen_promocion = $imagen_promocion['url'];
+										$descripcion_promocion = get_field('descripcion_promocion');
+										?>
+										<li class="slide promo js-abrir-promo" data-imagen="<?php echo esc_url($imagen_promocion); ?>" data-texto="<?php echo esc_attr($descripcion_promocion); ?>">
+											<img src="<?php echo esc_url($imagen_promocion); ?>" alt="">
+										</li>
+										<?php
+									}
+									?>
+							<?php
 							else :
 								echo '<p>No se encontraron promociones.</p>';
 							endif;
@@ -391,11 +408,12 @@ $color_acento = get_field('color-acento', 'options');  // Reemplaza 'accent_colo
 						$args = array(
 							'post_type' => 'platillo',
 							'posts_per_page' => -1,
-							'tax_query' => array(
+							// Si tiene el campo descuento_bol que esta en precio
+							'meta_query' => array(
 								array(
-									'taxonomy' => 'category', // Asegúrate de que la taxonomía sea correcta, en este caso es 'category'
-									'field' => 'slug',
-									'terms' => 'Promocion', // El slug de la categoría que deseas filtrar
+									'key' => 'precio_descuento_bol', // Reemplaza con la clave correcta del subcampo
+									'value' => '1', // Reemplaza con el valor que deseas filtrar, puede ser 1 si es un checkbox o true/false si es un booleano
+									'compare' => '=', // Compara si el valor es igual al valor especificado
 								),
 							),
 						);
