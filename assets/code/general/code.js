@@ -282,6 +282,8 @@ for (i = 0; i < categorias.length; i++) {
   categorias[i].addEventListener("click", function () {
     // Remover categoria--selected a todas las categorias
     removerCategoriaSelected();
+    removerPlatoActive();
+
     // Agregar categoria--selected a la categoria seleccionada
     this.classList.add("categoria--selected");
 
@@ -290,23 +292,26 @@ for (i = 0; i < categorias.length; i++) {
     // Minusculas
     categoria = categoria.toLowerCase();
 
-    // Iteramos sobre los hijos de .platos
-    var platos = document.getElementsByClassName("js-plato-menu");
+    // Set time out para que se vea la animacion
+    setTimeout(function () {
+        // Iteramos sobre los hijos de .platos
+        var platos = document.getElementsByClassName("js-plato-menu");
 
-    for (i = 0; i < platos.length; i++) {
-      platos[i].classList.remove("plato--active");
-      var categoriasPlato = platos[i].dataset.cat;
-      // minusculas
-      categoriasPlato = categoriasPlato.toLowerCase();
-      // Quitar espacios
-      categoriasPlato = categoriasPlato.replace(/\s/g, "");
-      categoriasPlato = categoriasPlato.split(",");
+        for (i = 0; i < platos.length; i++) {
+          var categoriasPlato = platos[i].dataset.cat;
+          // minusculas
+          categoriasPlato = categoriasPlato.toLowerCase();
+          // Quitar espacios
+          categoriasPlato = categoriasPlato.replace(/\s/g, "");
+          categoriasPlato = categoriasPlato.split(",");
 
-      // Si alguna categoria del plato es igual a la categoria seleccionada
-      if (categoriasPlato.includes(categoria)) {
-        platos[i].classList.add("plato--active");
-      }
-    }
+          // Si alguna categoria del plato es igual a la categoria seleccionada
+          if (categoriasPlato.includes(categoria)) {
+            platos[i].classList.add("plato--active");
+          }
+        }
+
+    }, 100);
   });
 }
 
@@ -314,6 +319,14 @@ for (i = 0; i < categorias.length; i++) {
 function removerCategoriaSelected() {
   for (i = 0; i < categorias.length; i++) {
     categorias[i].classList.remove("categoria--selected");
+  }
+}
+
+// Remover plao--active a todos los platos
+function removerPlatoActive() {
+  var platos = document.getElementsByClassName("js-plato-menu");
+  for (i = 0; i < platos.length; i++) {
+    platos[i].classList.remove("plato--active");
   }
 }
 

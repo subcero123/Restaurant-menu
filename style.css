@@ -796,6 +796,7 @@ body {
   justify-content: center;
   align-items: stretch;
   flex: 1;
+  min-height: 112px;
   max-height: 150px;
   opacity: 0;
   position: absolute;
