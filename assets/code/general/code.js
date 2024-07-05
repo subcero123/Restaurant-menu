@@ -105,7 +105,7 @@ jQuery(function ($) {
                         </div>
                     </div>
                     <div class="tiempo">
-                        <img src="//localhost:3000/work/wordpress/RestP/wp-content/themes/RestP/assets/images/reloj.svg" alt="Descripción del SVG">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/reloj.svg" alt="Descripción del SVG">
                         <span>${value.tiempo} min aprox</span>
                     </div>
                     <div class="resumen">
@@ -311,7 +311,7 @@ for (i = 0; i < categorias.length; i++) {
           }
         }
 
-    }, 100);
+    }, 20);
   });
 }
 
